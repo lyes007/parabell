@@ -12,6 +12,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { prisma } from "@/lib/prisma"
 
 interface ProductPageProps {
   params: {
@@ -19,14 +20,72 @@ interface ProductPageProps {
   }
 }
 
+// Generate static params for all products
+export async function generateStaticParams() {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        is_active: true,
+        published_at: {
+          lte: new Date(),
+        },
+      },
+      select: {
+        slug: true,
+      },
+    })
+
+    return products.map((product) => ({
+      slug: product.slug,
+    }))
+  } catch (error) {
+    console.error("Error generating static params:", error)
+    return []
+  }
+}
+
 async function getProduct(slug: string) {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/products/${slug}`,
-      {
-        cache: "no-store",
+    // Try direct database access first (for build time)
+    const product = await prisma.product.findUnique({
+      where: {
+        slug: slug,
+        is_active: true,
       },
-    )
+      include: {
+        brand: true,
+        reviews: {
+          include: {
+            user: {
+              select: {
+                name: true,
+                avatar_url: true,
+              },
+            },
+          },
+          orderBy: {
+            created_at: "desc",
+          },
+        },
+      },
+    })
+
+    if (product) {
+      // Convert BigInt values to strings for JSON serialization
+      return {
+        ...product,
+        id: product.id.toString(),
+        total_sold: product.total_sold.toString(),
+      }
+    }
+
+    // Fallback to API call (for runtime)
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+    
+    const response = await fetch(`${baseUrl}/api/products/${slug}`, {
+      cache: "no-store",
+    })
 
     if (!response.ok) {
       return null
@@ -38,6 +97,9 @@ async function getProduct(slug: string) {
     return null
   }
 }
+
+// Force dynamic rendering for this page
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const product = await getProduct(params.slug)
