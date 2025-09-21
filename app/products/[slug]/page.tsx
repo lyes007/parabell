@@ -46,7 +46,7 @@ export async function generateStaticParams() {
 
 async function getProduct(slug: string) {
   try {
-    // Try direct database access first (for build time)
+    // Direct database access - this works in both build time and runtime
     const product = await prisma.product.findUnique({
       where: {
         slug: slug,
@@ -79,19 +79,7 @@ async function getProduct(slug: string) {
       }
     }
 
-    // Fallback to API call (for runtime)
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
-    
-    const response = await fetch(`${baseUrl}/api/products/${slug}`, {
-      cache: "no-store",
-    })
-
-    if (!response.ok) {
-      return null
-    }
-
-    return await response.json()
+    return null
   } catch (error) {
     console.error("Error fetching product:", error)
     return null
