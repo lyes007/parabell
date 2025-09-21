@@ -1,0 +1,71 @@
+
+OVERALL MULTI-BRAND PROCESSING SUMMARY
+Generated on: 2025-09-21 15:08:10
+
+BRAND RESULTS:
+
+FORTEPHARMA:
+- Total names to match: 31
+- Successfully matched: 30
+- Unmatched: 1
+- Match rate: 96.8%
+- Images downloaded: 30
+- Images failed: 0
+- Output folder: output\FortePharma
+
+CLINICWAY:
+- Total names to match: 62
+- Successfully matched: 61
+- Unmatched: 1
+- Match rate: 98.4%
+- Images downloaded: 61
+- Images failed: 0
+- Output folder: output\ClinicWay
+
+PHARMACERIS:
+- Total names to match: 103
+- Successfully matched: 79
+- Unmatched: 24
+- Match rate: 76.7%
+- Images downloaded: 133
+- Images failed: 0
+- Output folder: output\Pharmaceris
+
+DERMEDIC:
+- Total names to match: 59
+- Successfully matched: 57
+- Unmatched: 2
+- Match rate: 96.6%
+- Images downloaded: 86
+- Images failed: 0
+- Output folder: output\Dermedic
+
+LIRENE:
+- Total names to match: 100
+- Successfully matched: 80
+- Unmatched: 20
+- Match rate: 80.0%
+- Images downloaded: 80
+- Images failed: 0
+- Output folder: output\Lirene
+
+MIRADENT:
+- Total names to match: 1
+- Successfully matched: 1
+- Unmatched: 0
+- Match rate: 100.0%
+- Images downloaded: 2
+- Images failed: 0
+- Output folder: output\MiraDent
+
+
+OVERALL TOTALS:
+- Total names processed: 356
+- Total products matched: 308
+- Total unmatched: 48
+- Overall match rate: 86.5%
+- Total images downloaded: 392
+- Total images failed: 0
+- Overall image success rate: 100.0%
+
+PROCESSING COMPLETED SUCCESSFULLY!

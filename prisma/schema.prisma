@@ -1,0 +1,219 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Brand {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  slug        String    @unique @db.VarChar(200)
+  description String?   @db.Text
+  logo_url    String?   @db.VarChar(500)
+  is_active   Boolean   @default(true)
+  created_at  DateTime  @default(now()) @db.Timestamptz
+  updated_at  DateTime  @updatedAt @db.Timestamptz
+  deleted_at  DateTime? @db.Timestamptz
+
+  products Product[]
+
+  @@map("brands")
+}
+
+model Product {
+  id                   BigInt    @id @default(autoincrement())
+  brand_id             Int
+  sku                  String?   @unique @db.VarChar(64)
+  slug                 String    @unique @db.VarChar(200)
+  name                 String    @db.VarChar(255)
+  short_description    String?   @db.Text
+  description          String?   @db.Text
+  highlights           String?   @db.Text
+  
+  // Pricing
+  price                Decimal   @db.Decimal(10, 2)
+  compare_at_price     Decimal?  @db.Decimal(10, 2)
+  currency             String    @default("EUR") @db.Char(3)
+  cost_price           Decimal?  @db.Decimal(10, 2)
+  
+  // Inventory & shipping
+  track_inventory      Boolean   @default(true)
+  stock_quantity       Int       @default(0)
+  inventory_policy     String    @default("deny") @db.VarChar(20)
+  low_stock_threshold  Int       @default(5)
+  weight_kg            Decimal?  @db.Decimal(8, 4)
+  length_cm            Decimal?  @db.Decimal(8, 2)
+  width_cm             Decimal?  @db.Decimal(8, 2)
+  height_cm            Decimal?  @db.Decimal(8, 2)
+  
+  // Supplement / regulatory fields
+  gtin                 String?   @db.VarChar(32)
+  batch_number         String?   @db.VarChar(64)
+  expiry_date          DateTime? @db.Date
+  ingredients          String?   @db.Text
+  allergens            String?   @db.Text
+  dosage               String?   @db.Text
+  directions           String?   @db.Text
+  warnings             String?   @db.Text
+  servings_per_container Int?
+  net_content          String?   @db.VarChar(64)
+  
+  // Flexible structured fields
+  attributes           Json      @default("{}") @db.JsonB
+  nutrition            Json?     @db.JsonB
+  badges               String[]
+  
+  // Media and SEO
+  images               Json      @default("[]") @db.JsonB
+  video_urls           String[]
+  seo                  Json      @default("{}") @db.JsonB
+  tags                 String[]
+  
+  // Visibility / lifecycle
+  is_active            Boolean   @default(true)
+  is_featured          Boolean   @default(false)
+  published_at         DateTime? @db.Timestamptz
+  available_from       DateTime? @db.Timestamptz
+  
+  // Ratings & analytics
+  avg_rating           Decimal   @default(0) @db.Decimal(3, 2)
+  reviews_count        Int       @default(0)
+  total_sold           BigInt    @default(0)
+  
+  // Admin / soft delete
+  created_at           DateTime  @default(now()) @db.Timestamptz
+  updated_at           DateTime  @updatedAt @db.Timestamptz
+  deleted_at           DateTime? @db.Timestamptz
+
+  brand                Brand     @relation(fields: [brand_id], references: [id], onDelete: Restrict)
+  cart_items           CartItem[]
+  order_items          OrderItem[]
+  reviews              Review[]
+
+  @@index([brand_id])
+  @@index([slug])
+  @@index([sku])
+  @@index([published_at])
+  @@index([is_active, published_at])
+  @@map("products")
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  slug        String    @unique @db.VarChar(200)
+  description String?   @db.Text
+  image_url   String?   @db.VarChar(500)
+  parent_id   Int?
+  sort_order  Int       @default(0)
+  is_active   Boolean   @default(true)
+  created_at  DateTime  @default(now()) @db.Timestamptz
+  updated_at  DateTime  @updatedAt @db.Timestamptz
+
+  parent      Category? @relation("CategoryHierarchy", fields: [parent_id], references: [id])
+  children    Category[] @relation("CategoryHierarchy")
+
+  @@map("categories")
+}
+
+model User {
+  id         String    @id @default(cuid())
+  email      String    @unique
+  name       String?
+  avatar_url String?
+  created_at DateTime  @default(now()) @db.Timestamptz
+  updated_at DateTime  @updatedAt @db.Timestamptz
+
+  carts      Cart[]
+  orders     Order[]
+  reviews    Review[]
+
+  @@map("users")
+}
+
+model Cart {
+  id         String     @id @default(cuid())
+  user_id    String?
+  session_id String?
+  created_at DateTime   @default(now()) @db.Timestamptz
+  updated_at DateTime   @updatedAt @db.Timestamptz
+
+  user       User?      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  items      CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id         String   @id @default(cuid())
+  cart_id    String
+  product_id BigInt
+  quantity   Int
+  created_at DateTime @default(now()) @db.Timestamptz
+  updated_at DateTime @updatedAt @db.Timestamptz
+
+  cart       Cart     @relation(fields: [cart_id], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@unique([cart_id, product_id])
+  @@map("cart_items")
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  user_id         String?
+  email           String
+  status          String      @default("pending")
+  total_amount    Decimal     @db.Decimal(10, 2)
+  currency        String      @default("EUR") @db.Char(3)
+  shipping_address Json       @db.JsonB
+  billing_address Json       @db.JsonB
+  payment_status  String      @default("pending")
+  payment_method  String?
+  notes           String?     @db.Text
+  created_at      DateTime    @default(now()) @db.Timestamptz
+  updated_at      DateTime    @updatedAt @db.Timestamptz
+
+  user            User?       @relation(fields: [user_id], references: [id])
+  items           OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  order_id   String
+  product_id BigInt
+  quantity   Int
+  price      Decimal @db.Decimal(10, 2)
+  total      Decimal @db.Decimal(10, 2)
+
+  order      Order   @relation(fields: [order_id], references: [id], onDelete: Cascade)
+  product    Product @relation(fields: [product_id], references: [id])
+
+  @@map("order_items")
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  product_id BigInt
+  user_id    String
+  rating     Int      @db.SmallInt
+  title      String?  @db.VarChar(255)
+  comment    String?  @db.Text
+  is_verified Boolean @default(false)
+  created_at DateTime @default(now()) @db.Timestamptz
+  updated_at DateTime @updatedAt @db.Timestamptz
+
+  product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@unique([product_id, user_id])
+  @@map("reviews")
+}

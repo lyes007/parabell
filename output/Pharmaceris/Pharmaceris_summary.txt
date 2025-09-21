@@ -1,0 +1,55 @@
+
+PHARMACERIS PROCESSING SUMMARY REPORT
+Generated on: 2025-09-21 15:07:24
+
+INPUT FILES:
+- Products file: PharmaceriesAll.csv (67 total products)
+- Name list files: PharmaceriesNameList.csv, PharmaceriesNameList2.csv (103 names to match)
+
+RESULTS:
+- Successfully matched: 79 products
+- Unmatched names: 24 names
+- Match rate: 76.7%
+
+IMAGE DOWNLOAD:
+- Images successfully downloaded: 133
+- Images failed to download: 0
+- Success rate: 100.0%
+
+OUTPUT FILES:
+- Pharmaceris_matched_products.csv: Complete product details for matched items
+- Pharmaceris_unmatched_names.csv: List of names that couldn't be matched
+- Pharmaceris_final_products.csv: Final product list with image paths, prices, and categories
+- Pharmaceris_match_details.csv: Detailed matching information with similarity scores
+- PharmacerisImages/ folder: Contains all downloaded product images in JPG format
+
+MATCHING CRITERIA:
+- Used fuzzy string matching with similarity threshold of 60%
+- Normalized product names for better matching
+- Handled common variations in naming conventions
+
+UNMATCHED NAMES:
+- PHARMACERIS S Spray 360°
+- PHARMACERIS A VITA SENSILIM @@@
+- PHARMACERIS X SUBTILLIMASSAGE (Masectomie)
+- PHARMACERIS S Ecran Visage SPF50+ Spectrum  HEV - IR 
+- PLATINUM MEN Huile à Barbe 30ml
+- BUSTFIRM
+- TOCOREDUCT FORTE (Traitement des Vergetures)
+- Pharmaceris T  MOUSSE T PURI SEBOSTATIC
+- COFFRET OPTI SENSILIUM + PREBIO SENSILIQUE  GRATUITE
+- PHARMACERIS FOND DE TEINT HYDRATANT & ANTIOXIDENT ( 02 NATURAL )
+- PLATINUM MEN Skin Confort Baume après Rassage 50ml
+- PHARMACERIS VITI MELO JOUR
+- PHARMACERIS A OPTI SENSILIUM@@@
+- PHARMACERIS VITI MELO  NUIT
+- PHARMACERIS S Ecran Visage SPF50+  Medi Acné( Peaux Grasses)
+- PHARMACERIS FOND DE TEINT HYDRATANT & ANTIOXIDENT ( 03 TANNED )
+- FOLIACTI (Prevention des Vergetures)
+- PHARMACERIS FOND DE TEINT INTENSE COVERAGE ( 03 BRONZE )
+- PHARMACERIS S Ecran Visage SPF50+ Spectrum  HEV - IR +2EME GRATUITE
+- Coffret  S Ecran Visage SPF50+  Medi Acné( Peaux Grasses)+1 Mousse GRATUITE
+- PHARMACERIS A CORNEO SENSILIUM
+- PHARMACERIS P ICHTILIX-FORTE PSORIATIC ( liquide kératolytique réduisant les squames psoriasiques 125 ml )
+- COFFRET Shampooing Anti-chute H-STIMUPRIN 250ML + STIMUFORTEN 125ML 50%
+- Coffret  Aprés shampoing Anti-chute H-STIMULIN 150ML +(Stimuclarise 50%)
