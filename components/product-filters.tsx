@@ -11,7 +11,7 @@ interface ProductFiltersProps {
   filters: {
     priceRange: number[]
     brands: string[]
-    badges: string[]
+    categories: string[]
     inStock: boolean
   }
   onFiltersChange: (filters: any) => void
@@ -21,14 +21,7 @@ interface ProductFiltersProps {
 
 export function ProductFilters({ filters, onFiltersChange, category, brand }: ProductFiltersProps) {
   const [availableBrands, setAvailableBrands] = useState<string[]>([])
-  const [availableBadges] = useState<string[]>([
-    "Vegan",
-    "Organic",
-    "Gluten-Free",
-    "Sugar-Free",
-    "Non-GMO",
-    "Cruelty-Free",
-  ])
+  const [availableCategories, setAvailableCategories] = useState<string[]>([])
 
   useEffect(() => {
     // Fetch available brands
@@ -40,6 +33,20 @@ export function ProductFilters({ filters, onFiltersChange, category, brand }: Pr
       .catch(console.error)
   }, [])
 
+  useEffect(() => {
+    // Fetch categories for the selected brand
+    if (brand) {
+      fetch(`/api/categories?brand=${brand}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAvailableCategories(data.categories?.map((cat: any) => cat.name) || [])
+        })
+        .catch(console.error)
+    } else {
+      setAvailableCategories([])
+    }
+  }, [brand])
+
   const handlePriceChange = (value: number[]) => {
     onFiltersChange({ ...filters, priceRange: value })
   }
@@ -49,16 +56,17 @@ export function ProductFilters({ filters, onFiltersChange, category, brand }: Pr
     onFiltersChange({ ...filters, brands: newBrands })
   }
 
-  const handleBadgeChange = (badge: string, checked: boolean) => {
-    const newBadges = checked ? [...filters.badges, badge] : filters.badges.filter((b) => b !== badge)
-    onFiltersChange({ ...filters, badges: newBadges })
+
+  const handleCategoryChange = (categoryName: string, checked: boolean) => {
+    const newCategories = checked ? [...filters.categories, categoryName] : filters.categories.filter((c) => c !== categoryName)
+    onFiltersChange({ ...filters, categories: newCategories })
   }
 
   const clearFilters = () => {
     onFiltersChange({
       priceRange: [0, 1000],
       brands: [],
-      badges: [],
+      categories: [],
       inStock: false,
     })
   }
@@ -66,15 +74,14 @@ export function ProductFilters({ filters, onFiltersChange, category, brand }: Pr
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold hidden lg:block">Filters</h3>
-        <Button variant="ghost" size="sm" onClick={clearFilters}>
+        <h3 className="text-lg font-semibold text-gray-900">Filter by price</h3>
+        <Button variant="ghost" size="sm" onClick={clearFilters} className="text-gray-500 hover:text-gray-700">
           Clear All
         </Button>
       </div>
 
       {/* Price Range */}
-      <div className="space-y-3">
-        <Label className="text-sm font-medium">Price Range</Label>
+      <div className="space-y-4">
         <div className="px-2">
           <Slider
             value={filters.priceRange}
@@ -84,27 +91,64 @@ export function ProductFilters({ filters, onFiltersChange, category, brand }: Pr
             step={10}
             className="w-full"
           />
-          <div className="flex justify-between text-sm text-gray-500 mt-2">
-            <span>€{filters.priceRange[0]}</span>
-            <span>€{filters.priceRange[1]}</span>
+          <div className="flex justify-between text-sm text-gray-600 mt-3">
+            <span>Min price</span>
+            <span>Max price</span>
+          </div>
+          <div className="flex justify-between text-sm font-medium text-gray-900 mt-1">
+            <span>{filters.priceRange[0]} TND</span>
+            <span>{filters.priceRange[1]} TND</span>
           </div>
         </div>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
+        >
+          Filter
+        </Button>
       </div>
 
       <Separator />
 
-      {/* Availability */}
-      <div className="space-y-3">
-        <Label className="text-sm font-medium">Availability</Label>
-        <div className="flex items-center space-x-2">
-          <Checkbox
-            id="in-stock"
-            checked={filters.inStock}
-            onCheckedChange={(checked) => onFiltersChange({ ...filters, inStock: checked })}
-          />
-          <Label htmlFor="in-stock" className="text-sm">
-            In Stock Only
-          </Label>
+      {/* Categories - only show if a brand is selected */}
+      {brand && availableCategories.length > 0 && (
+        <>
+          <div className="space-y-4">
+            <h4 className="text-sm font-medium text-gray-900">Categories</h4>
+            <div className="space-y-2 max-h-48 overflow-y-auto">
+              {availableCategories.map((categoryName) => (
+                <div key={categoryName} className="flex items-center space-x-2">
+                  <Checkbox
+                    id={`category-${categoryName}`}
+                    checked={filters.categories.includes(categoryName)}
+                    onCheckedChange={(checked) => handleCategoryChange(categoryName, checked as boolean)}
+                  />
+                  <Label htmlFor={`category-${categoryName}`} className="text-sm text-gray-600">
+                    {categoryName}
+                  </Label>
+                </div>
+              ))}
+            </div>
+          </div>
+          <Separator />
+        </>
+      )}
+
+      {/* Filter by Stock */}
+      <div className="space-y-4">
+        <h4 className="text-sm font-medium text-gray-900">Availability</h4>
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="in-stock"
+              checked={filters.inStock}
+              onCheckedChange={(checked) => onFiltersChange({ ...filters, inStock: checked })}
+            />
+            <Label htmlFor="in-stock" className="text-sm text-gray-600">
+              In Stock Only
+            </Label>
+          </div>
         </div>
       </div>
 
@@ -113,8 +157,8 @@ export function ProductFilters({ filters, onFiltersChange, category, brand }: Pr
       {/* Brands - only show if not filtering by specific brand */}
       {!brand && availableBrands.length > 0 && (
         <>
-          <div className="space-y-3">
-            <Label className="text-sm font-medium">Brands</Label>
+          <div className="space-y-4">
+            <h4 className="text-sm font-medium text-gray-900">Brands</h4>
             <div className="space-y-2 max-h-48 overflow-y-auto">
               {availableBrands.map((brandName) => (
                 <div key={brandName} className="flex items-center space-x-2">
@@ -123,7 +167,7 @@ export function ProductFilters({ filters, onFiltersChange, category, brand }: Pr
                     checked={filters.brands.includes(brandName)}
                     onCheckedChange={(checked) => handleBrandChange(brandName, checked as boolean)}
                   />
-                  <Label htmlFor={`brand-${brandName}`} className="text-sm">
+                  <Label htmlFor={`brand-${brandName}`} className="text-sm text-gray-600">
                     {brandName}
                   </Label>
                 </div>
@@ -134,24 +178,6 @@ export function ProductFilters({ filters, onFiltersChange, category, brand }: Pr
         </>
       )}
 
-      {/* Product Badges */}
-      <div className="space-y-3">
-        <Label className="text-sm font-medium">Product Features</Label>
-        <div className="space-y-2">
-          {availableBadges.map((badge) => (
-            <div key={badge} className="flex items-center space-x-2">
-              <Checkbox
-                id={`badge-${badge}`}
-                checked={filters.badges.includes(badge)}
-                onCheckedChange={(checked) => handleBadgeChange(badge, checked as boolean)}
-              />
-              <Label htmlFor={`badge-${badge}`} className="text-sm">
-                {badge}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   )
 }

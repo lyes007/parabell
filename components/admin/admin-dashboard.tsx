@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -38,73 +39,18 @@ export function AdminDashboard() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate loading dashboard data
     const loadDashboardData = async () => {
       try {
-        // Mock data - in production, fetch from APIs
-        setStats({
-          totalOrders: 1247,
-          totalProducts: 156,
-          totalCustomers: 892,
-          totalRevenue: 45678.9,
-          ordersGrowth: 12.5,
-          revenueGrowth: 8.3,
-        })
-
-        setRecentOrders([
-          {
-            id: "ORD-001",
-            customer: "Maria Schmidt",
-            total: 89.99,
-            status: "completed",
-            date: "2024-01-15",
-          },
-          {
-            id: "ORD-002",
-            customer: "Hans Mueller",
-            total: 156.5,
-            status: "processing",
-            date: "2024-01-15",
-          },
-          {
-            id: "ORD-003",
-            customer: "Anna Weber",
-            total: 67.25,
-            status: "shipped",
-            date: "2024-01-14",
-          },
-          {
-            id: "ORD-004",
-            customer: "Klaus Fischer",
-            total: 234.8,
-            status: "pending",
-            date: "2024-01-14",
-          },
-        ])
-
-        setLowStockProducts([
-          {
-            id: "1",
-            name: "Vitamin D3 1000 IU",
-            brand: "Nature's Best",
-            stock: 5,
-            threshold: 10,
-          },
-          {
-            id: "2",
-            name: "Omega-3 Fish Oil",
-            brand: "Pure Health",
-            stock: 3,
-            threshold: 15,
-          },
-          {
-            id: "3",
-            name: "Magnesium Complex",
-            brand: "Vital Nutrients",
-            stock: 8,
-            threshold: 20,
-          },
-        ])
+        const response = await fetch("/api/admin/dashboard")
+        const data = await response.json()
+        
+        if (response.ok) {
+          setStats(data.stats)
+          setRecentOrders(data.recentOrders)
+          setLowStockProducts(data.lowStockProducts)
+        } else {
+          console.error("Error loading dashboard data:", data.error)
+        }
       } catch (error) {
         console.error("Error loading dashboard data:", error)
       } finally {
@@ -116,9 +62,9 @@ export function AdminDashboard() {
   }, [])
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-EU", {
+    return new Intl.NumberFormat("ar-TN", {
       style: "currency",
-      currency: "EUR",
+      currency: "TND",
     }).format(amount)
   }
 
@@ -250,9 +196,11 @@ export function AdminDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Recent Orders</CardTitle>
-            <Button variant="outline" size="sm">
-              <Eye className="w-4 h-4 mr-2" />
-              View All
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/admin/orders">
+                <Eye className="w-4 h-4 mr-2" />
+                View All
+              </Link>
             </Button>
           </CardHeader>
           <CardContent>
@@ -266,21 +214,29 @@ export function AdminDashboard() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {recentOrders.map((order) => (
-                  <TableRow key={order.id}>
-                    <TableCell className="font-medium">{order.id}</TableCell>
-                    <TableCell>{order.customer}</TableCell>
-                    <TableCell>
-                      <Badge className={getStatusColor(order.status)} variant="secondary">
-                        <div className="flex items-center gap-1">
-                          {getStatusIcon(order.status)}
-                          {order.status}
-                        </div>
-                      </Badge>
+                {recentOrders.length > 0 ? (
+                  recentOrders.map((order) => (
+                    <TableRow key={order.id}>
+                      <TableCell className="font-medium">{order.id}</TableCell>
+                      <TableCell>{order.customer}</TableCell>
+                      <TableCell>
+                        <Badge className={getStatusColor(order.status)} variant="secondary">
+                          <div className="flex items-center gap-1">
+                            {getStatusIcon(order.status)}
+                            {order.status}
+                          </div>
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right">{formatCurrency(order.total)}</TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={4} className="text-center py-8 text-gray-500">
+                      No recent orders found
                     </TableCell>
-                    <TableCell className="text-right">{formatCurrency(order.total)}</TableCell>
                   </TableRow>
-                ))}
+                )}
               </TableBody>
             </Table>
           </CardContent>
@@ -293,25 +249,34 @@ export function AdminDashboard() {
               <AlertTriangle className="w-5 h-5 text-yellow-600" />
               Low Stock Alert
             </CardTitle>
-            <Button variant="outline" size="sm">
-              <Package className="w-4 h-4 mr-2" />
-              Manage Inventory
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/admin/products">
+                <Package className="w-4 h-4 mr-2" />
+                Manage Inventory
+              </Link>
             </Button>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {lowStockProducts.map((product) => (
-                <div key={product.id} className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-gray-900">{product.name}</p>
-                    <p className="text-sm text-gray-600">{product.brand}</p>
+              {lowStockProducts.length > 0 ? (
+                lowStockProducts.map((product) => (
+                  <div key={product.id} className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                    <div>
+                      <p className="font-medium text-gray-900">{product.name}</p>
+                      <p className="text-sm text-gray-600">{product.brand}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-medium text-yellow-800">{product.stock} left</p>
+                      <p className="text-xs text-gray-500">Threshold: {product.threshold}</p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm font-medium text-yellow-800">{product.stock} left</p>
-                    <p className="text-xs text-gray-500">Threshold: {product.threshold}</p>
-                  </div>
+                ))
+              ) : (
+                <div className="text-center py-8">
+                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
+                  <p className="text-gray-500">All products are well stocked!</p>
                 </div>
-              ))}
+              )}
             </div>
           </CardContent>
         </Card>

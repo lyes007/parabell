@@ -34,9 +34,9 @@ export function CheckoutContent() {
   })
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-EU", {
+    return new Intl.NumberFormat("en-TN", {
       style: "currency",
-      currency: "EUR",
+      currency: "TND",
     }).format(price)
   }
 
@@ -52,14 +52,47 @@ export function CheckoutContent() {
     setIsProcessing(true)
 
     try {
-      // Simulate order processing
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      // Create order data
+      const orderData = {
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        address: formData.address,
+        city: formData.city,
+        postalCode: formData.postalCode,
+        country: formData.country,
+        phone: formData.phone,
+        paymentMethod: formData.paymentMethod,
+        notes: formData.notes,
+        items: items,
+        total: finalTotal,
+        currency: "TND"
+      }
+
+      // Send order to API
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || "Failed to create order")
+      }
+
+      const result = await response.json()
+      console.log("Order created successfully:", result.order)
 
       // Clear cart and redirect to success page
       clearCart()
       router.push("/order-success")
     } catch (error) {
       console.error("Order processing error:", error)
+      // You could add a toast notification here to show the error to the user
+      alert("Failed to process order. Please try again.")
     } finally {
       setIsProcessing(false)
     }

@@ -29,9 +29,9 @@ export function ProductSort({ sortBy, sortOrder, onSortChange }: ProductSortProp
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm text-gray-600 whitespace-nowrap">Sort by:</span>
+      <span className="text-sm text-gray-600 whitespace-nowrap">Default sorting</span>
       <Select value={currentValue} onValueChange={handleSortChange}>
-        <SelectTrigger className="w-48">
+        <SelectTrigger className="w-48 border-gray-300 text-gray-700">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

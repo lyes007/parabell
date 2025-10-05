@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { PlantBasedButton } from "@/components/plant-based-button"
 import { ArrowRight, Truck, Clock, Sparkles, Leaf } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useRef } from "react"
@@ -85,9 +86,7 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in-up animate-delay-200">
-              <span className="gradient-text">Natural Wellness</span>
-              <br />
-              <span className="text-foreground">Redefined</span>
+              <span className="gradient-text">Toujours Belle</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed animate-fade-in-up animate-delay-400 text-pretty">
@@ -97,15 +96,9 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 animate-fade-in-up animate-delay-600">
-            <a href="/products">
-              <Button
-                size="lg"
-                className="btn-flashy text-primary-foreground px-8 py-4 rounded-full text-lg font-semibold group"
-              >
-                Explore Products
-                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
-              </Button>
-            </a>
+            <PlantBasedButton href="/products">
+              Explore Products
+            </PlantBasedButton>
             <a href="/brands">
               <Button
                 variant="outline"

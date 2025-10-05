@@ -14,8 +14,11 @@ export function CartContent() {
   const { items, total, itemCount, updateQuantity, removeItem, clearCart } = useCart()
   const [isUpdating, setIsUpdating] = useState<string | null>(null)
 
-  const formatPrice = (price: number, currency = "EUR") => {
-    return new Intl.NumberFormat("en-EU", {
+  // Debug logging
+  console.log("🛒 CartContent rendered with:", { items: items.length, total, itemCount })
+
+  const formatPrice = (price: number, currency = "TND") => {
+    return new Intl.NumberFormat("en-TN", {
       style: "currency",
       currency,
     }).format(price)

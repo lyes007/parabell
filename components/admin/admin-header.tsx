@@ -17,16 +17,16 @@ export function AdminHeader() {
     <header className="bg-white border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <Link href="/admin" className="flex items-center gap-2">
+        <Link href="/admin" className="flex items-center gap-3">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/elevate_icon-removebg-preview-mlpZVYIdhRkYPfOLcaGD4wfJ2TqdWx.png"
-            alt="Para Bell"
-            width={32}
-            height={32}
-            className="w-8 h-8"
+            src="/parabell-logo.png"
+            alt="Para Bell Pharmacy"
+            width={120}
+            height={40}
+            className="h-8 w-auto object-contain"
+            priority
           />
           <div className="flex flex-col">
-            <span className="text-lg font-bold text-[#96A78D]">Para Bell</span>
             <span className="text-xs text-gray-500 -mt-1">Admin Dashboard</span>
           </div>
         </Link>

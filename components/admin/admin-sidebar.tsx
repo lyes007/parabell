@@ -10,9 +10,6 @@ import {
   ShoppingCart,
   Users,
   BarChart3,
-  Settings,
-  Tag,
-  FileText,
   ChevronDown,
   ChevronRight,
 } from "lucide-react"
@@ -49,29 +46,6 @@ const navigation = [
     name: "Analytics",
     href: "/admin/analytics",
     icon: BarChart3,
-  },
-  {
-    name: "Marketing",
-    icon: Tag,
-    children: [
-      { name: "Promotions", href: "/admin/promotions" },
-      { name: "Coupons", href: "/admin/coupons" },
-      { name: "Email Campaigns", href: "/admin/campaigns" },
-    ],
-  },
-  {
-    name: "Content",
-    icon: FileText,
-    children: [
-      { name: "Pages", href: "/admin/pages" },
-      { name: "Blog Posts", href: "/admin/blog" },
-      { name: "Reviews", href: "/admin/reviews" },
-    ],
-  },
-  {
-    name: "Settings",
-    href: "/admin/settings",
-    icon: Settings,
   },
 ]
 

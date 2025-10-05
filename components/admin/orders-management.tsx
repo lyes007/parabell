@@ -1,89 +1,59 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Filter, Download, ShoppingCart, Clock, CheckCircle, Package, AlertTriangle, Euro } from "lucide-react"
-
-interface Order {
-  id: string
-  customer: {
-    name: string
-    email: string
-  }
-  total: number
-  status: string
-  items_count: number
-  created_at: string
-  updated_at: string
-}
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Search, Filter, Download, ShoppingCart, Clock, CheckCircle, Package, AlertTriangle, Euro, Edit, Eye } from "lucide-react"
+import { Order } from "@/lib/types"
 
 export function OrdersManagement() {
   const [orders, setOrders] = useState<Order[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
-  const [dateFilter, setDateFilter] = useState("all")
+  const [paymentStatusFilter, setPaymentStatusFilter] = useState("all")
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
+  const [editForm, setEditForm] = useState({
+    status: "",
+    payment_status: "",
+    notes: "",
+  })
+  const [isUpdating, setIsUpdating] = useState(false)
 
   useEffect(() => {
     loadOrders()
-  }, [])
+  }, [searchTerm, statusFilter, paymentStatusFilter])
+
+  // Cleanup dialog state when it closes
+  useEffect(() => {
+    if (!isEditDialogOpen) {
+      setSelectedOrder(null)
+      setEditForm({ status: "", payment_status: "", notes: "" })
+    }
+  }, [isEditDialogOpen])
 
   const loadOrders = async () => {
     try {
-      // Mock data - in production, fetch from API
-      const mockOrders: Order[] = [
-        {
-          id: "ORD-001",
-          customer: { name: "Maria Schmidt", email: "maria@example.com" },
-          total: 89.99,
-          status: "completed",
-          items_count: 3,
-          created_at: "2024-01-15T10:30:00Z",
-          updated_at: "2024-01-15T14:20:00Z",
-        },
-        {
-          id: "ORD-002",
-          customer: { name: "Hans Mueller", email: "hans@example.com" },
-          total: 156.5,
-          status: "processing",
-          items_count: 5,
-          created_at: "2024-01-15T09:15:00Z",
-          updated_at: "2024-01-15T09:15:00Z",
-        },
-        {
-          id: "ORD-003",
-          customer: { name: "Anna Weber", email: "anna@example.com" },
-          total: 67.25,
-          status: "shipped",
-          items_count: 2,
-          created_at: "2024-01-14T16:45:00Z",
-          updated_at: "2024-01-15T08:30:00Z",
-        },
-        {
-          id: "ORD-004",
-          customer: { name: "Klaus Fischer", email: "klaus@example.com" },
-          total: 234.8,
-          status: "pending",
-          items_count: 7,
-          created_at: "2024-01-14T14:20:00Z",
-          updated_at: "2024-01-14T14:20:00Z",
-        },
-        {
-          id: "ORD-005",
-          customer: { name: "Sophie Braun", email: "sophie@example.com" },
-          total: 45.99,
-          status: "cancelled",
-          items_count: 1,
-          created_at: "2024-01-13T11:10:00Z",
-          updated_at: "2024-01-13T15:30:00Z",
-        },
-      ]
-      setOrders(mockOrders)
+      setLoading(true)
+      const params = new URLSearchParams({
+        limit: "50",
+        ...(searchTerm && { search: searchTerm }),
+        ...(statusFilter !== "all" && { status: statusFilter }),
+        ...(paymentStatusFilter !== "all" && { payment_status: paymentStatusFilter }),
+      })
+      
+      const response = await fetch(`/api/admin/orders?${params}`)
+      const data = await response.json()
+      setOrders(data.orders || [])
     } catch (error) {
       console.error("Error loading orders:", error)
     } finally {
@@ -91,11 +61,61 @@ export function OrdersManagement() {
     }
   }
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-EU", {
+  const handleUpdateOrder = async () => {
+    if (!selectedOrder || isUpdating) return
+
+    try {
+      setIsUpdating(true)
+      const response = await fetch("/api/admin/orders", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: selectedOrder.id,
+          ...editForm,
+        }),
+      })
+
+      if (response.ok) {
+        setIsEditDialogOpen(false)
+        setSelectedOrder(null)
+        setEditForm({ status: "", payment_status: "", notes: "" })
+        loadOrders()
+      } else {
+        const error = await response.json()
+        alert(error.error || "Failed to update order")
+      }
+    } catch (error) {
+      console.error("Error updating order:", error)
+      alert("Failed to update order")
+    } finally {
+      setIsUpdating(false)
+    }
+  }
+
+  const openEditDialog = (order: Order) => {
+    console.log("Opening edit dialog for order:", order.id)
+    try {
+      setSelectedOrder(order)
+      setEditForm({
+        status: order.status,
+        payment_status: order.payment_status,
+        notes: order.notes || "",
+      })
+      setIsEditDialogOpen(true)
+      console.log("Dialog state set to open")
+    } catch (error) {
+      console.error("Error opening edit dialog:", error)
+    }
+  }
+
+  const formatCurrency = (amount: string | number) => {
+    const numAmount = typeof amount === "string" ? Number.parseFloat(amount) : amount
+    return new Intl.NumberFormat("ar-TN", {
       style: "currency",
-      currency: "EUR",
-    }).format(amount)
+      currency: "TND",
+    }).format(numAmount)
   }
 
   const formatDate = (dateString: string) => {
@@ -142,18 +162,10 @@ export function OrdersManagement() {
     }
   }
 
-  const filteredOrders = orders.filter((order) => {
-    const matchesSearch =
-      order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.customer.email.toLowerCase().includes(searchTerm.toLowerCase())
+  // Orders are already filtered by the API, so we can use them directly
+  const filteredOrders = orders
 
-    const matchesStatus = statusFilter === "all" || order.status === statusFilter
-
-    return matchesSearch && matchesStatus
-  })
-
-  const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0)
+  const totalRevenue = orders.reduce((sum, order) => sum + Number.parseFloat(order.total_amount), 0)
   const completedOrders = orders.filter((order) => order.status === "completed").length
   const pendingOrders = orders.filter((order) => order.status === "pending").length
 
@@ -174,10 +186,35 @@ export function OrdersManagement() {
           <h1 className="text-3xl font-bold text-gray-900">Orders</h1>
           <p className="text-gray-600">Manage customer orders and fulfillment</p>
         </div>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline" 
+            onClick={() => {
+              console.log("Test button clicked")
+              setIsEditDialogOpen(true)
+              setSelectedOrder({
+                id: "test",
+                email: "test@example.com",
+                status: "pending",
+                payment_status: "pending",
+                notes: "",
+                total_amount: "0",
+                currency: "TND",
+                shipping_address: {},
+                billing_address: {},
+                created_at: new Date(),
+                updated_at: new Date(),
+                items: []
+              })
+            }}
+          >
+            Test Dialog
+          </Button>
         <Button variant="outline">
           <Download className="w-4 h-4 mr-2" />
           Export Orders
         </Button>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -268,6 +305,18 @@ export function OrdersManagement() {
                 <SelectItem value="cancelled">Cancelled</SelectItem>
               </SelectContent>
             </Select>
+            <Select value={paymentStatusFilter} onValueChange={setPaymentStatusFilter}>
+              <SelectTrigger className="w-full sm:w-48">
+                <SelectValue placeholder="Filter by payment" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Payment Status</SelectItem>
+                <SelectItem value="pending">Pending</SelectItem>
+                <SelectItem value="paid">Paid</SelectItem>
+                <SelectItem value="failed">Failed</SelectItem>
+                <SelectItem value="refunded">Refunded</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </CardContent>
       </Card>
@@ -283,25 +332,33 @@ export function OrdersManagement() {
                 <TableHead>Items</TableHead>
                 <TableHead>Total</TableHead>
                 <TableHead>Status</TableHead>
+                <TableHead>Payment</TableHead>
                 <TableHead>Date</TableHead>
+                <TableHead className="w-16"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredOrders.map((order) => (
-                <TableRow key={order.id} className="cursor-pointer hover:bg-gray-50">
+              {filteredOrders.map((order) => {
+                const customerName = order.user?.name || 
+                  `${order.shipping_address?.firstName || ''} ${order.shipping_address?.lastName || ''}`.trim() || 
+                  'Guest'
+                const customerEmail = order.user?.email || order.email
+
+                return (
+                  <TableRow key={order.id} className="hover:bg-gray-50">
                   <TableCell className="font-medium">{order.id}</TableCell>
                   <TableCell>
                     <div>
-                      <p className="font-medium text-gray-900">{order.customer.name}</p>
-                      <p className="text-sm text-gray-500">{order.customer.email}</p>
+                        <p className="font-medium text-gray-900">{customerName}</p>
+                        <p className="text-sm text-gray-500">{customerEmail}</p>
                     </div>
                   </TableCell>
                   <TableCell>
                     <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-                      {order.items_count} items
+                        {order.items.length} items
                     </Badge>
                   </TableCell>
-                  <TableCell className="font-medium">{formatCurrency(order.total)}</TableCell>
+                    <TableCell className="font-medium">{formatCurrency(order.total_amount)}</TableCell>
                   <TableCell>
                     <Badge className={getStatusColor(order.status)} variant="secondary">
                       <div className="flex items-center gap-1">
@@ -310,9 +367,47 @@ export function OrdersManagement() {
                       </div>
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-gray-600">{formatDate(order.created_at)}</TableCell>
+                    <TableCell>
+                      <Badge 
+                        className={
+                          order.payment_status === "paid" ? "bg-green-100 text-green-800" :
+                          order.payment_status === "failed" ? "bg-red-100 text-red-800" :
+                          order.payment_status === "refunded" ? "bg-yellow-100 text-yellow-800" :
+                          "bg-gray-100 text-gray-800"
+                        } 
+                        variant="secondary"
+                      >
+                        {order.payment_status}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-gray-600">{formatDate(order.created_at.toString())}</TableCell>
+                    <TableCell>
+                      <div className="flex gap-1">
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                          onClick={() => openEditDialog(order)}
+                          title="Edit Order"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                          asChild
+                          title="View Details"
+                        >
+                          <Link href={`/admin/orders/${order.id}`}>
+                            <Eye className="h-4 w-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </TableCell>
                 </TableRow>
-              ))}
+                )
+              })}
             </TableBody>
           </Table>
 
@@ -324,6 +419,67 @@ export function OrdersManagement() {
           )}
         </CardContent>
       </Card>
+
+      {/* Edit Order Dialog */}
+      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Edit Order {selectedOrder?.id}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="status">Order Status</Label>
+              <Select value={editForm.status} onValueChange={(value) => setEditForm({ ...editForm, status: value })}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="pending">Pending</SelectItem>
+                  <SelectItem value="processing">Processing</SelectItem>
+                  <SelectItem value="shipped">Shipped</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
+                  <SelectItem value="cancelled">Cancelled</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label htmlFor="payment_status">Payment Status</Label>
+              <Select value={editForm.payment_status} onValueChange={(value) => setEditForm({ ...editForm, payment_status: value })}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select payment status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="pending">Pending</SelectItem>
+                  <SelectItem value="paid">Paid</SelectItem>
+                  <SelectItem value="failed">Failed</SelectItem>
+                  <SelectItem value="refunded">Refunded</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label htmlFor="notes">Notes</Label>
+              <Textarea
+                id="notes"
+                value={editForm.notes}
+                onChange={(e) => setEditForm({ ...editForm, notes: e.target.value })}
+                placeholder="Order notes..."
+              />
+            </div>
+            <div className="flex justify-end space-x-2">
+              <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button 
+                onClick={handleUpdateOrder} 
+                disabled={isUpdating}
+                className="bg-[#96A78D] hover:bg-[#B6CEB4]"
+              >
+                {isUpdating ? "Updating..." : "Update Order"}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

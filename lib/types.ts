@@ -10,11 +10,15 @@ export interface Product {
   price: number
   compare_at_price?: number
   currency: string
+  cost_price?: number
   stock_quantity: number
   track_inventory: boolean
   inventory_policy: string
   low_stock_threshold: number
   weight_kg?: number
+  length_cm?: number
+  width_cm?: number
+  height_cm?: number
   gtin?: string
   batch_number?: string
   expiry_date?: Date
@@ -38,9 +42,10 @@ export interface Product {
   available_from?: Date
   avg_rating: number
   reviews_count: number
-  total_sold: number
+  total_sold: string // BigInt converted to string
   created_at: Date
   updated_at: Date
+  deleted_at?: Date
   brand: Brand
 }
 
@@ -83,4 +88,32 @@ export interface Cart {
   user_id?: string
   session_id?: string
   items: CartItem[]
+}
+
+export interface Order {
+  id: string
+  user_id?: string
+  email: string
+  status: string
+  total_amount: string // Decimal converted to string
+  currency: string
+  shipping_address: Record<string, any>
+  billing_address: Record<string, any>
+  payment_status: string
+  payment_method?: string
+  notes?: string
+  created_at: Date
+  updated_at: Date
+  user?: User
+  items: OrderItem[]
+}
+
+export interface OrderItem {
+  id: string
+  order_id: string
+  product_id: string
+  quantity: number
+  price: string // Decimal converted to string
+  total: string // Decimal converted to string
+  product: Product
 }

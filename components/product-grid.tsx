@@ -15,11 +15,12 @@ interface ProductGridProps {
   filters?: {
     priceRange: number[]
     brands: string[]
-    badges: string[]
+    categories: string[]
     inStock: boolean
   }
   sortBy?: string
   sortOrder?: string
+  onTotalResultsChange?: (total: number) => void
 }
 
 export function ProductGrid({
@@ -31,6 +32,7 @@ export function ProductGrid({
   filters,
   sortBy = "created_at",
   sortOrder = "desc",
+  onTotalResultsChange,
 }: ProductGridProps) {
   const [products, setProducts] = useState<Product[]>(initialProducts || [])
   const [loading, setLoading] = useState(false)
@@ -59,7 +61,7 @@ export function ProductGrid({
         if (filters.priceRange[0] > 0) params.append("minPrice", filters.priceRange[0].toString())
         if (filters.priceRange[1] < 1000) params.append("maxPrice", filters.priceRange[1].toString())
         if (filters.brands.length > 0) params.append("brands", filters.brands.join(","))
-        if (filters.badges.length > 0) params.append("badges", filters.badges.join(","))
+        if (filters.categories.length > 0) params.append("categories", filters.categories.join(","))
         if (filters.inStock) params.append("inStock", "true")
       }
 
@@ -82,12 +84,20 @@ export function ProductGrid({
       }
 
       setHasMore(pageNum < (data.pagination?.pages || 1))
+      
+      // Update total results count
+      if (onTotalResultsChange && data.pagination?.total !== undefined) {
+        onTotalResultsChange(data.pagination.total)
+      }
     } catch (error) {
       console.error("Error loading products:", error)
       setError(error instanceof Error ? error.message : "Failed to load products")
       // Ensure products is always an array
       if (reset) {
         setProducts([])
+        if (onTotalResultsChange) {
+          onTotalResultsChange(0)
+        }
       }
     } finally {
       setLoading(false)
@@ -110,20 +120,20 @@ export function ProductGrid({
   const safeProducts = Array.isArray(products) ? products : []
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-8">
       {error && (
-        <div className="text-center py-20">
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100/50 border border-gray-200/60 rounded-2xl p-8 max-w-lg mx-auto backdrop-blur-sm">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#96A78D]/10 to-[#B6CEB4]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div className="w-8 h-8 bg-[#96A78D] rounded-full opacity-60"></div>
+        <div className="text-center py-16">
+          <div className="bg-white border border-gray-200 rounded-lg p-8 max-w-md mx-auto">
+            <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-6 h-6 bg-gray-300 rounded-full"></div>
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Unable to load products</h3>
-            <p className="text-gray-600 text-sm mb-6 leading-relaxed">{error}</p>
+            <p className="text-gray-600 text-sm mb-6">{error}</p>
             <Button 
               onClick={() => loadProducts(1, true)} 
               variant="outline" 
               size="sm" 
-              className="bg-white/80 hover:bg-white border-gray-300/60 hover:border-[#96A78D]/40 text-gray-700 hover:text-[#96A78D] transition-all duration-300"
+              className="border-gray-300 text-gray-700 hover:bg-gray-50"
             >
               Try Again
             </Button>
@@ -132,26 +142,20 @@ export function ProductGrid({
       )}
 
       {!error && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-12">
-          {safeProducts.map((product, index) => (
-            <div 
-              key={product.id} 
-              className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <ProductCard product={product} />
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {safeProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}
 
       {safeProducts.length === 0 && !loading && !error && (
-        <div className="text-center py-20">
-          <div className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
-            <div className="w-10 h-10 bg-gray-300 rounded-full opacity-60"></div>
+        <div className="text-center py-16">
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
-          <p className="text-gray-600 max-w-md mx-auto leading-relaxed">
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">No products found</h3>
+          <p className="text-gray-600 max-w-md mx-auto">
             We couldn't find any products matching your criteria. Try adjusting your filters or search terms.
           </p>
         </div>
@@ -164,7 +168,7 @@ export function ProductGrid({
             disabled={loading} 
             variant="outline" 
             size="lg"
-            className="bg-white/80 hover:bg-white border-gray-300/60 hover:border-[#96A78D]/40 text-gray-700 hover:text-[#96A78D] transition-all duration-300 px-8 py-3 rounded-full font-medium"
+            className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3"
           >
             {loading ? (
               <>

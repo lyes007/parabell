@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -11,11 +12,14 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-lg">P</span>
-                </div>
-                <span className="text-xl font-bold text-foreground">PharmaCare</span>
+              <div className="flex items-center">
+                <Image
+                  src="/parabell-logo.png"
+                  alt="ParaBell"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </div>
               <p className="text-muted-foreground leading-relaxed text-pretty">
                 Your trusted partner in health and wellness. We provide premium pharmaceutical products and expert
@@ -130,7 +134,7 @@ export function Footer() {
         {/* Bottom footer */}
         <div className="py-6 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-muted-foreground">© 2024 PharmaCare. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">© 2024 ParaBell. All rights reserved.</p>
             <div className="flex space-x-6 text-sm text-muted-foreground">
               <a href="/products" className="hover:text-primary transition-colors duration-200">
                 Products

@@ -17,6 +17,7 @@ export async function GET(request: NextRequest) {
     const maxPrice = searchParams.get("maxPrice")
     const brands = searchParams.get("brands")
     const badges = searchParams.get("badges")
+    const categories = searchParams.get("categories")
     const inStock = searchParams.get("inStock") === "true"
 
     const skip = (page - 1) * limit
@@ -74,6 +75,14 @@ export async function GET(request: NextRequest) {
       }
     }
 
+    // Category filter (filter by category relationship)
+    if (categories) {
+      const categoryList = categories.split(",")
+      where.category = {
+        name: { in: categoryList }
+      }
+    }
+
     // Stock filter
     if (inStock) {
       where.OR = [
@@ -101,6 +110,7 @@ export async function GET(request: NextRequest) {
         where,
         include: {
           brand: true,
+          category: true,
         },
         orderBy,
         skip,

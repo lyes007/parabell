@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useReducer, useEffect, type ReactNode } from "react"
+import { createContext, useContext, useReducer, useEffect, useState, type ReactNode } from "react"
 import type { Product } from "@/lib/types"
 
 interface CartItem {
@@ -103,26 +103,42 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)
+  const [isClient, setIsClient] = useState(false)
 
-  // Load cart from localStorage on mount
+  // Set client flag after hydration
   useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  // Load cart from localStorage on mount (only on client)
+  useEffect(() => {
+    if (!isClient) return
+    
+    console.log("🛒 Loading cart from localStorage...")
     const savedCart = localStorage.getItem("para-bell-cart")
     if (savedCart) {
       try {
         const cartItems = JSON.parse(savedCart)
+        console.log("🛒 Cart items loaded:", cartItems)
         dispatch({ type: "LOAD_CART", payload: cartItems })
       } catch (error) {
         console.error("Error loading cart from localStorage:", error)
       }
+    } else {
+      console.log("🛒 No saved cart found in localStorage")
     }
-  }, [])
+  }, [isClient])
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage whenever it changes (only on client)
   useEffect(() => {
+    if (!isClient) return
+    
+    console.log("🛒 Saving cart to localStorage:", state.items)
     localStorage.setItem("para-bell-cart", JSON.stringify(state.items))
-  }, [state.items])
+  }, [state.items, isClient])
 
   const addItem = (product: Product, quantity = 1) => {
+    console.log("🛒 Adding item to cart:", product.name, "quantity:", quantity)
     dispatch({ type: "ADD_ITEM", payload: { product, quantity } })
   }
 

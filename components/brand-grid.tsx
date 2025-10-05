@@ -51,52 +51,29 @@ export function BrandGrid() {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
       {brands.map((brand) => (
         <Link key={brand.id} href={`/brands/${brand.slug}`}>
-          <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-sm hover:border-[#96A78D]/20 bg-white hover:bg-gradient-to-br hover:from-white hover:to-[#F0F0F0]/30">
-            <CardContent className="p-8">
-              <div className="aspect-[4/3] bg-gradient-to-br from-[#F0F0F0] to-[#D9E9CF] rounded-xl mb-6 flex items-center justify-center overflow-hidden relative group-hover:shadow-lg transition-all duration-300">
-                {brand.logo_url ? (
-                  <div className="relative w-full h-full flex items-center justify-center p-4">
-                    <Image
-                      src={brand.logo_url || "/placeholder.svg"}
-                      alt={brand.name}
-                      width={200}
-                      height={150}
-                      className="object-contain group-hover:scale-110 transition-transform duration-500 max-w-full max-h-full"
-                      priority={false}
-                    />
-                    {/* Subtle overlay effect on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#96A78D]/5 to-[#B6CEB4]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-                  </div>
-                ) : (
-                  <div className="text-4xl font-bold text-[#96A78D] group-hover:scale-110 transition-transform duration-300">
-                    {brand.name.charAt(0)}
-                  </div>
-                )}
+          <div className="group hover:scale-105 transition-transform duration-300">
+            {brand.logo_url ? (
+              <div className="relative w-full h-24 flex items-center justify-center p-4">
+                <Image
+                  src={brand.logo_url || "/placeholder.svg"}
+                  alt={brand.name}
+                  width={120}
+                  height={96}
+                  className="object-contain group-hover:scale-110 transition-transform duration-300 max-w-full max-h-full"
+                  priority={false}
+                />
               </div>
-              <div className="text-center">
-                <h3 className="font-bold text-xl text-gray-900 mb-3 group-hover:text-[#96A78D] transition-colors duration-300">
-                  {brand.name}
-                </h3>
-                {brand.description && (
-                  <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                    {brand.description}
-                  </p>
-                )}
-                {/* View Products button */}
-                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="inline-flex items-center text-[#96A78D] font-medium text-sm hover:text-[#B6CEB4] transition-colors duration-300">
-                    View Products
-                    <svg className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
+            ) : (
+              <div className="w-full h-24 flex items-center justify-center bg-gray-100 rounded-lg">
+                <div className="text-2xl font-bold text-gray-400">
+                  {brand.name.charAt(0)}
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            )}
+          </div>
         </Link>
       ))}
     </div>

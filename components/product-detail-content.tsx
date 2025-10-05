@@ -40,9 +40,9 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
   const mainImage = images[selectedImageIndex] || { url: "/placeholder.svg", alt: product.name }
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("en-EU", {
+    return new Intl.NumberFormat("en-TN", {
       style: "currency",
-      currency: product.currency || "EUR",
+      currency: product.currency || "TND",
     }).format(price)
   }
 
@@ -72,12 +72,12 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
       {/* Product Images */}
       <div className="space-y-4">
         {/* Main Image */}
-        <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden relative">
+        <div className="aspect-square bg-white rounded-2xl overflow-hidden relative">
           <Image
             src={mainImage.url || "/placeholder.svg"}
             alt={mainImage.alt || product.name}
             fill
-            className="object-cover"
+            className="object-contain scale-90"
             priority
           />
           {isOnSale && (
@@ -112,7 +112,7 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
                   alt={image.alt || `${product.name} ${index + 1}`}
                   width={80}
                   height={80}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </button>
             ))}
