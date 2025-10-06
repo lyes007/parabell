@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
       description,
       sku,
       compare_at_price,
-      currency = "EUR",
+      currency = "TND",
       images,
     } = body
 

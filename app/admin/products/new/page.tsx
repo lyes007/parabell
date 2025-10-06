@@ -168,7 +168,7 @@ export default function AdminNewProductPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <Label htmlFor="price">Price (EUR) *</Label>
+                      <Label htmlFor="price">Price (TND) *</Label>
                       <Input
                         id="price"
                         type="number"

@@ -25,6 +25,7 @@ export async function GET(request: NextRequest) {
     // Build where clause
     const where: any = {
       is_active: true,
+      deleted_at: null, // Exclude soft-deleted products
       published_at: {
         lte: new Date(),
       },

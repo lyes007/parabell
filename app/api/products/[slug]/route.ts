@@ -7,6 +7,7 @@ export async function GET(request: NextRequest, { params }: { params: { slug: st
       where: {
         slug: params.slug,
         is_active: true,
+        deleted_at: null, // Exclude soft-deleted products
       },
       include: {
         brand: true,
