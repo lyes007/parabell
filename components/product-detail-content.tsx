@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Image from "next/image"
 import type { Product } from "@/lib/types"
 import { Button } from "@/components/ui/button"
@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useCart } from "@/lib/cart-context"
+import { useRouter, useSearchParams } from "next/navigation"
 import {
   Star,
   ShoppingCart,
@@ -33,6 +34,23 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
   const [isWishlisted, setIsWishlisted] = useState(false)
   const [isAddingToCart, setIsAddingToCart] = useState(false)
   const [showAddedMessage, setShowAddedMessage] = useState(false)
+  const [showBuyNow, setShowBuyNow] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(false)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+    phone: "",
+    paymentMethod: "cash_on_delivery",
+    notes: "",
+  })
 
   const { addItem } = useCart()
 
@@ -46,10 +64,9 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
     }).format(price)
   }
 
-  const isOnSale = product.compare_at_price && product.compare_at_price > product.price
-  const discountPercentage = isOnSale
-    ? Math.round(((product.compare_at_price - product.price) / product.compare_at_price) * 100)
-    : 0
+  const compareAt = product.compare_at_price ?? null
+  const isOnSale = typeof compareAt === "number" && compareAt > product.price
+  const discountPercentage = isOnSale ? Math.round(((compareAt - product.price) / compareAt) * 100) : 0
 
   const isInStock = !product.track_inventory || product.stock_quantity > 0
   const isLowStock = product.track_inventory && product.stock_quantity <= product.low_stock_threshold
@@ -64,6 +81,65 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
       console.error("Error adding to cart:", error)
     } finally {
       setIsAddingToCart(false)
+    }
+  }
+
+  useEffect(() => {
+    if (searchParams?.get("buy") === "1") {
+      setShowBuyNow(true)
+    }
+  }, [searchParams])
+
+  const finalTotal = useMemo(() => {
+    return product.price * quantity
+  }, [product.price, quantity])
+
+  const handleBuyNowSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsProcessing(true)
+    try {
+      const orderData = {
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        address: formData.address,
+        city: formData.city,
+        postalCode: formData.postalCode,
+        country: formData.country,
+        phone: formData.phone,
+        paymentMethod: formData.paymentMethod,
+        notes: formData.notes,
+        items: [
+          {
+            id: `${product.id}-${Date.now()}`,
+            product,
+            quantity,
+          },
+        ],
+        total: finalTotal,
+        currency: product.currency || "TND",
+      }
+
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({} as any))
+        throw new Error((errorData as any)?.error || "Failed to create order")
+      }
+
+      await response.json()
+      router.push("/order-success")
+    } catch (error) {
+      console.error("Order processing error:", error)
+      alert("Failed to process order. Please try again.")
+    } finally {
+      setIsProcessing(false)
     }
   }
 
@@ -148,8 +224,8 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
           {/* Price */}
           <div className="flex items-center gap-3 mb-6">
             <span className="text-3xl font-bold text-gray-900">{formatPrice(product.price)}</span>
-            {isOnSale && (
-              <span className="text-xl text-gray-500 line-through">{formatPrice(product.compare_at_price!)}</span>
+            {isOnSale && compareAt !== null && (
+              <span className="text-xl text-gray-500 line-through">{formatPrice(compareAt)}</span>
             )}
           </div>
 
@@ -228,6 +304,14 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
               )}
             </Button>
             <Button
+              size="lg"
+              className="flex-1 bg-gray-900 hover:bg-gray-800 text-white"
+              disabled={!isInStock || isProcessing}
+              onClick={() => setShowBuyNow((v) => !v)}
+            >
+              {showBuyNow ? "Close Checkout" : "Buy Now"}
+            </Button>
+            <Button
               variant="outline"
               size="lg"
               onClick={() => setIsWishlisted(!isWishlisted)}
@@ -239,6 +323,99 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
               <Share2 className="w-5 h-5" />
             </Button>
           </div>
+          {showBuyNow && (
+            <div className="mt-4 border border-gray-200 rounded-xl p-4">
+              <h3 className="text-lg font-semibold mb-3">Quick Checkout</h3>
+              <form onSubmit={handleBuyNowSubmit} className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <input
+                    required
+                    type="text"
+                    placeholder="First name"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData((p) => ({ ...p, firstName: e.target.value }))}
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                  />
+                  <input
+                    required
+                    type="text"
+                    placeholder="Last name"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData((p) => ({ ...p, lastName: e.target.value }))}
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                  />
+                </div>
+                <input
+                  required
+                  type="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="Address"
+                  value={formData.address}
+                  onChange={(e) => setFormData((p) => ({ ...p, address: e.target.value }))}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <input
+                    required
+                    type="text"
+                    placeholder="City"
+                    value={formData.city}
+                    onChange={(e) => setFormData((p) => ({ ...p, city: e.target.value }))}
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                  />
+                  <input
+                    required
+                    type="text"
+                    placeholder="Postal code"
+                    value={formData.postalCode}
+                    onChange={(e) => setFormData((p) => ({ ...p, postalCode: e.target.value }))}
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                  />
+                  <input
+                    required
+                    type="text"
+                    placeholder="Country"
+                    value={formData.country}
+                    onChange={(e) => setFormData((p) => ({ ...p, country: e.target.value }))}
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                  />
+                </div>
+                <input
+                  type="tel"
+                  placeholder="Phone (optional)"
+                  value={formData.phone}
+                  onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                />
+                <textarea
+                  placeholder="Notes (optional)"
+                  value={formData.notes}
+                  onChange={(e) => setFormData((p) => ({ ...p, notes: e.target.value }))}
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#96A78D]"
+                />
+                <div className="flex items-center justify-between pt-2">
+                  <div className="text-sm text-gray-600">
+                    Total: <span className="font-semibold text-gray-900">{formatPrice(finalTotal)}</span>
+                  </div>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="bg-[#96A78D] hover:bg-[#B6CEB4] text-white"
+                    disabled={isProcessing}
+                  >
+                    {isProcessing ? "Processing..." : "Confirm Order"}
+                  </Button>
+                </div>
+              </form>
+            </div>
+          )}
         </div>
 
         {/* Trust Badges */}
@@ -375,9 +552,9 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
           <TabsContent value="reviews" className="mt-6">
             <Card>
               <CardContent className="p-6">
-                {product.reviews && product.reviews.length > 0 ? (
+                {Array.isArray((product as any).reviews) && (product as any).reviews.length > 0 ? (
                   <div className="space-y-6">
-                    {product.reviews.map((review: any) => (
+                    {(product as any).reviews.map((review: any) => (
                       <div key={review.id} className="border-b border-gray-200 pb-6 last:border-b-0">
                         <div className="flex items-start justify-between mb-3">
                           <div>

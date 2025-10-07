@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { EmailService } from "@/lib/email-service"
 
 export async function POST(request: NextRequest) {
   try {
@@ -95,6 +96,33 @@ export async function POST(request: NextRequest) {
         total: item.total.toString(),
       })),
     }
+
+    // Send email notifications (don't await to avoid blocking the response)
+    const emailData = {
+      orderId: order.id,
+      customerName: `${firstName} ${lastName}`,
+      customerEmail: email,
+      customerPhone: phone || undefined,
+      totalAmount: parseFloat(totalAmount.toString()),
+      currency,
+      items: items.map((item: any) => ({
+        name: item.product.name,
+        quantity: item.quantity,
+        price: parseFloat(item.product.price.toString()),
+      })),
+      shippingAddress: {
+        address,
+        city,
+        postalCode,
+        country,
+      },
+      paymentMethod: paymentMethod || 'cash_on_delivery',
+    }
+
+    // Send email notifications asynchronously
+    EmailService.sendOrderNotifications(emailData).catch((error) => {
+      console.error('Email notification failed:', error)
+    })
 
     return NextResponse.json({
       success: true,

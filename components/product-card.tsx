@@ -59,12 +59,22 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Category */}
         <div className="text-xs text-gray-500 mb-2">
-          {product.category?.name || product.brand.name}
+          {(product as any)?.category?.name || product.brand.name}
         </div>
 
         {/* Price */}
         <div className="text-sm font-semibold text-gray-900">
           {formatPrice(product.price)}
+        </div>
+
+        {/* Actions */}
+        <div className="mt-3 flex items-center justify-center gap-2">
+          <Link
+            href={`/products/${product.slug}?buy=1`}
+            className="inline-flex items-center justify-center rounded-md bg-gray-900 px-3 py-2 text-white text-xs font-medium hover:bg-gray-800"
+          >
+            Buy Now
+          </Link>
         </div>
       </div>
     </div>
