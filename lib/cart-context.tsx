@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useReducer, useEffect, useState, type ReactNode } from "react"
 import type { Product } from "@/lib/types"
+import { metaPixelEvents } from "@/components/meta-pixel"
 
 interface CartItem {
   id: string
@@ -97,6 +98,7 @@ interface CartContextType extends CartState {
   removeItem: (productId: string) => void
   updateQuantity: (productId: string, quantity: number) => void
   clearCart: () => void
+  trackCheckoutInitiation: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -140,10 +142,37 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const addItem = (product: Product, quantity = 1) => {
     console.log("🛒 Adding item to cart:", product.name, "quantity:", quantity)
     dispatch({ type: "ADD_ITEM", payload: { product, quantity } })
+    
+    // Track AddToCart event with Meta Pixel
+    metaPixelEvents.trackAddToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      currency: product.currency,
+      quantity: quantity,
+      category: (product as any)?.category?.name,
+      brand: product.brand.name,
+    })
   }
 
   const removeItem = (productId: string) => {
+    // Find the item being removed to track it
+    const itemToRemove = state.items.find(item => item.product.id === productId)
+    
     dispatch({ type: "REMOVE_ITEM", payload: { productId } })
+    
+    // Track RemoveFromCart event with Meta Pixel
+    if (itemToRemove) {
+      metaPixelEvents.trackRemoveFromCart({
+        id: itemToRemove.product.id,
+        name: itemToRemove.product.name,
+        price: itemToRemove.product.price,
+        currency: itemToRemove.product.currency,
+        quantity: itemToRemove.quantity,
+        category: (itemToRemove.product as any)?.category?.name,
+        brand: itemToRemove.product.brand.name,
+      })
+    }
   }
 
   const updateQuantity = (productId: string, quantity: number) => {
@@ -154,6 +183,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "CLEAR_CART" })
   }
 
+  const trackCheckoutInitiation = () => {
+    if (state.items.length > 0) {
+      const cartItems = state.items.map(item => ({
+        id: item.product.id,
+        name: item.product.name,
+        price: item.product.price,
+        quantity: item.quantity,
+        category: (item.product as any)?.category?.name,
+        brand: item.product.brand.name,
+      }))
+
+      metaPixelEvents.trackInitiateCheckout(
+        cartItems,
+        state.total,
+        state.items[0]?.product.currency || 'TND'
+      )
+    }
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -162,6 +210,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         removeItem,
         updateQuantity,
         clearCart,
+        trackCheckoutInitiation,
       }}
     >
       {children}

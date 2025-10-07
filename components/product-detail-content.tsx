@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useCart } from "@/lib/cart-context"
 import { useRouter, useSearchParams } from "next/navigation"
+import { metaPixelEvents } from "@/components/meta-pixel"
 import {
   Star,
   ShoppingCart,
@@ -89,6 +90,18 @@ export function ProductDetailContent({ product }: ProductDetailContentProps) {
       setShowBuyNow(true)
     }
   }, [searchParams])
+
+  // Track product view with Meta Pixel
+  useEffect(() => {
+    metaPixelEvents.trackViewContent({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      currency: product.currency,
+      category: (product as any)?.category?.name,
+      brand: product.brand.name,
+    })
+  }, [product])
 
   const finalTotal = useMemo(() => {
     return product.price * quantity

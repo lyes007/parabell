@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react"
 
 export function CartContent() {
-  const { items, total, itemCount, updateQuantity, removeItem, clearCart } = useCart()
+  const { items, total, itemCount, updateQuantity, removeItem, clearCart, trackCheckoutInitiation } = useCart()
   const [isUpdating, setIsUpdating] = useState<string | null>(null)
 
   // Debug logging
@@ -218,7 +218,12 @@ export function CartContent() {
               <span>{formatPrice(finalTotal)}</span>
             </div>
 
-            <Button asChild size="lg" className="w-full bg-[#96A78D] hover:bg-[#B6CEB4] text-white mb-3">
+            <Button 
+              asChild 
+              size="lg" 
+              className="w-full bg-[#96A78D] hover:bg-[#B6CEB4] text-white mb-3"
+              onClick={trackCheckoutInitiation}
+            >
               <Link href="/checkout">
                 Proceed to Checkout
                 <ArrowRight className="w-5 h-5 ml-2" />

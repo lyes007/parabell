@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { CartProvider } from "@/lib/cart-context"
+import { MetaPixel } from "@/components/meta-pixel"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -19,9 +20,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID
+
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        {pixelId && <MetaPixel pixelId={pixelId} />}
         <CartProvider>
           <Suspense fallback={null}>{children}</Suspense>
         </CartProvider>
