@@ -7,6 +7,13 @@ import { Suspense } from "react"
 import { CartProvider } from "@/lib/cart-context"
 import { MetaPixel } from "@/components/meta-pixel"
 import "./globals.css"
+import { Dancing_Script } from "next/font/google"
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-dancing-script",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Para Bell - Premium Health & Wellness Products",
@@ -24,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${dancingScript.variable}`}>
         {pixelId && <MetaPixel pixelId={pixelId} />}
         <CartProvider>
           <Suspense fallback={null}>{children}</Suspense>
