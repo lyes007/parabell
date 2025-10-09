@@ -27,7 +27,20 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <a href="/" className="flex items-center space-x-3 animate-slide-in-left">
+          {/* Mobile: Hamburger menu on left */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="hover:bg-accent/50 transition-all duration-300"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
+
+          {/* Desktop: Logo on left */}
+          <a href="/" className="hidden md:flex items-center space-x-3 animate-slide-in-left">
             <div className="relative">
               <Image
                 src="/parabell-logo.png"
@@ -35,6 +48,20 @@ export function Navbar() {
                 width={120}
                 height={40}
                 className="h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                priority
+              />
+            </div>
+          </a>
+
+          {/* Mobile: Logo in center */}
+          <a href="/" className="md:hidden flex items-center justify-center flex-1">
+            <div className="relative">
+              <Image
+                src="/parabell-logo.png"
+                alt="Para Bell Pharmacy"
+                width={100}
+                height={32}
+                className="h-8 w-auto object-contain transition-transform duration-300 hover:scale-105"
                 priority
               />
             </div>
@@ -109,16 +136,22 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile: Cart icon on right */}
           <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="hover:bg-accent/50 transition-all duration-300"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+            <a href="/cart">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-accent/50 transition-all duration-300 hover:scale-110 relative"
+              >
+                <ShoppingCart className="h-6 w-6" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-glow">
+                    {itemCount}
+                  </span>
+                )}
+              </Button>
+            </a>
           </div>
         </div>
 

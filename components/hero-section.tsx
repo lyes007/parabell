@@ -13,8 +13,8 @@ export function HeroSection() {
       ref={heroRef}
       className="relative min-h-screen overflow-hidden"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full">
+      {/* Video Background - Fixed */}
+      <div className="fixed inset-0 w-full h-full -z-10">
         {/* Desktop Video */}
         <video
           autoPlay
@@ -38,8 +38,8 @@ export function HeroSection() {
         </video>
       </div>
 
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      {/* Overlay for better text readability - Fixed */}
+      <div className="fixed inset-0 bg-black/20 -z-10"></div>
 
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-32 left-1/4 w-64 h-64 bg-gradient-to-r from-primary/20 to-accent/30 animate-morphing-blob blur-3xl"></div>
