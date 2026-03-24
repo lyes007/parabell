@@ -42,6 +42,17 @@ export default function RootLayout({
             gtag('config', 'G-MDQVT6PGJ3');
           `}
         </Script>
+        <Script id="matomo-tag-manager" strategy="afterInteractive">
+          {`
+            var _mtm = (window._mtm = window._mtm || []);
+            _mtm.push({ 'mtm.startTime': new Date().getTime(), event: 'mtm.Start' });
+          `}
+        </Script>
+        <Script
+          async
+          src="https://cdn.matomo.cloud/parabellestore.matomo.cloud/container_PKULEiu5.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${dancingScript.variable}`}>
         {pixelId && <MetaPixel pixelId={pixelId} />}
