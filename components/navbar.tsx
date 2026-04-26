@@ -90,13 +90,6 @@ export function Navbar() {
               Cart
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <a
-              href="/admin"
-              className="relative text-foreground hover:text-primary transition-all duration-300 font-medium group"
-            >
-              Admin
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
           </div>
 
           {/* Desktop Actions */}
@@ -176,12 +169,6 @@ export function Navbar() {
                 className="block px-4 py-3 text-foreground hover:text-primary hover:bg-accent/30 rounded-xl transition-all duration-300 font-medium"
               >
                 Cart
-              </a>
-              <a
-                href="/admin"
-                className="block px-4 py-3 text-foreground hover:text-primary hover:bg-accent/30 rounded-xl transition-all duration-300 font-medium"
-              >
-                Admin
               </a>
               <div className="flex items-center justify-center space-x-4 px-4 py-3">
                 <Button variant="ghost" size="icon" className="hover:bg-accent/50">

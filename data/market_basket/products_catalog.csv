@@ -1,0 +1,178 @@
+product_id,slug,name,brand,category,db_price,effective_price,currency,is_featured,avg_rating,reviews_count,total_sold,stock_quantity,tags
+295,crme-visage-pour-adulte-spf-50,Crème Visage pour Adulte SPF 50+,Lirene,PROTECTION SOLAIRE,0.00,39.43,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+296,lotion-solaire-pour-peau-sensible-spf-50,Lotion Solaire pour peau sensible SPF 50+,Lirene,PROTECTION SOLAIRE,0.00,50.48,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+297,crme-visage-pour-enfants-spf-50,Crème Visage pour Enfants SPF 50+,Lirene,PROTECTION SOLAIRE,0.00,46.87,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+298,lait-protecteur-spf50-au-parfum-de-vanille,Lait Protecteur SPF50 (Au parfum de Vanille),Lirene,PROTECTION SOLAIRE,0.00,45.95,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+299,sos-lotion-aprs-soleil,SOS : Lotion Après Soleil,Lirene,PROTECTION SOLAIRE,0.00,52.29,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+300,huile-sche-spf-50-sur-peau-humide-et-sche,Huile Sèche SPF 50 (Sur peau humide et sèche),Lirene,PROTECTION SOLAIRE,0.00,47.18,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+301,gel-anti-inflammatoire,GEL ANTI-INFLAMMATOIRE,Lirene,GELS POUR L'HYGIÈNE INTIME,0.00,47.55,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+302,gel-protecteur-et-hydratant,GEL PROTECTEUR ET HYDRATANT,Lirene,GELS POUR L'HYGIÈNE INTIME,0.00,50.05,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+303,eau-tonique,EAU TONIQUE,Lirene,AQUA BUBBLES,0.00,46.39,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+304,mousse-nettoyante,MOUSSE NETTOYANTE,Lirene,AQUA BUBBLES,0.00,45.40,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+306,hydrogel-visage-jour-nuitpeau-sche,HYDROGEL VISAGE JOUR & NUIT(Peau Sèche),Lirene,AQUA BUBBLES,0.00,41.04,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+307,hydrocrme-peau-normale-mixte,HYDROCRÈME (Peau normale à mixte),Lirene,AQUA BUBBLES,0.00,44.75,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+308,hydroserum-tous-types-de-peaux,HYDROSERUM (Tous types de peaux),Lirene,AQUA BUBBLES,0.00,39.92,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+309,srum-exfoliant-anti-tches,Sèrum Exfoliant Anti-Tâches,Lirene,ACIDE POWER,0.00,28.63,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+310,crme-hydratante,Crème Hydratante (Peaux Hyperpigmentées & Peaux grasses),Lirene,ACIDE POWER,0.00,27.50,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+311,srum-lissant,Sèrum Lissant (Peaux Matures),Lirene,ACIDE POWER,0.00,23.77,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+312,crme-comblante,Crème Comblante (Peaux Matures),Lirene,ACIDE POWER,0.00,27.50,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+313,srum-lissant-hydratante,Sèrum Lissant Hydratante (Peaux Sèches & Hypersensibles),Lirene,ACIDE POWER,0.00,27.91,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+314,crme-de-jour-liftante,Crème de Jour Liftante,Lirene,MEZO COLLAGÈNE,0.00,43.19,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+315,crme-de-nuit,Crème De Nuit,Lirene,MEZO COLLAGÈNE,0.00,51.22,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+316,cerise-hydratante,Cerise hydratante,Lirene,VEGAN (Hydratation&Nutrition),29.90,29.90,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+317,avocat-lissant,Avocat lissant,Lirene,VEGAN (Hydratation&Nutrition),29.90,29.90,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+318,aloe-vra-rgnrant,Aloe Véra – Régénérant,Lirene,VEGAN (Hydratation&Nutrition),29.90,29.90,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+319,amande-nourrissante,Amande Nourrissante,Lirene,VEGAN (Hydratation&Nutrition),29.90,29.90,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+320,magnolia-crme-mains-et-ongles,MAGNOLIA : Crème Mains et Ongles,Lirene,SOIN INTENSE (Mains & Pieds),0.00,22.09,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+321,sauge-masque-crme-mains-et-ongles,SAUGE : Masque Crème Mains et Ongles,Lirene,SOIN INTENSE (Mains & Pieds),0.00,28.26,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+322,cassis-srum-mains-et-ongles,CASSIS : Sérum Mains et Ongles,Lirene,SOIN INTENSE (Mains & Pieds),0.00,23.69,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+323,rose-crme-mains-et-ongles,ROSE : Crème Mains et Ongles,Lirene,SOIN INTENSE (Mains & Pieds),0.00,27.88,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+324,crme-pieds-concentre-lissante,Crème Pieds Concentrée lissante,Lirene,SOIN INTENSE (Mains & Pieds),0.00,28.51,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+325,masque-crme-pieds-ultra-adoucissant,Masque Crème Pieds ultra adoucissant,Lirene,SOIN INTENSE (Mains & Pieds),0.00,27.13,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+326,des-gants-pour-les-mains,Des Gants pour les Mains,Lirene,SOIN INTENSE (Mains & Pieds),0.00,25.90,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+327,masque-sous-forme-de-chaussettes,Masque sous forme de Chaussettes (Kératose),Lirene,SOIN INTENSE (Mains & Pieds),0.00,27.78,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+329,eau-micellaire-lissante,Eau micellaire lissante,Lirene,NETTOYANTS (Visage&Yeux),0.00,27.19,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+331,gel-nettoyant-hydratant,GEL NETTOYANT,Lirene,NETTOYANTS (Visage&Yeux),0.00,26.38,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+334,gommage-au-bambou,Gommage au Bambou,Lirene,NETTOYANTS (Visage&Yeux),0.00,27.38,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+335,gel-exfoliant-la-menthe,Gel Exfoliant à la Menthe,Lirene,NETTOYANTS (Visage&Yeux),0.00,23.44,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+336,crme-nourrissante-hydratante,Crème Nourrissante Hydratante,Lirene,VITAMIN ENERGIE C+D,0.00,52.49,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+337,stimu-srum-concentr,Stimu-Sérum Concentré,Lirene,VITAMIN ENERGIE C+D,0.00,39.54,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+338,crme-gel-hydratante-eclaircissante,Crème Gel Hydratante & Eclaircissante,Lirene,VITAMIN ENERGIE C+D,0.00,50.79,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+340,peeling-enzymatique,Peeling Enzymatique,Lirene,VITAMIN ENERGIE C+D,0.00,40.80,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+341,eau-micellaire-3en1,Eau Micellaire 3en1,Lirene,VITAMIN ENERGIE C+D,0.00,48.03,TND,0,0.00,0,0,50,Lirene|Protection Solaire
+342,fort-flex-max-articulations,Forté Flex Max Articulations,Forte Pharma,SANTÉ,95.08,95.08,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+343,fort-stresse-24h,Forté Stresse 24H,Forte Pharma,SANTÉ,53.55,53.55,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+344,expert-hyaluronic,Expert Hyaluronic,Forte Pharma,BEAUTÉ,111.74,111.74,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+345,expert-collagne,Expert Collagène,Forte Pharma,BEAUTÉ,106.86,106.86,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+346,expert-cheveux,Expert Cheveux,Forte Pharma,BEAUTÉ,60.00,60.00,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+348,ultra-boost-4g,Ultra boost 4G,Forte Pharma,ENERGIE,58.91,58.91,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+349,vitalit-4g-shots,Vitalité 4g shots,Forte Pharma,ENERGIE,58.91,58.91,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+350,tigra-men,Tigra+ Men,Forte Pharma,ENERGIE,59.38,59.38,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+351,acerola-vitamine-c,Acerola Vitamine C,Forte Pharma,ENERGIE,58.91,58.91,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+353,calorilight,Calorilight,Forte Pharma,MINCEUR,0.00,73.87,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+354,xtraslim-700,Xtraslim 700,Forte Pharma,MINCEUR,190.00,190.00,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+355,turbodraine-agrumes,Turbodraine AGRUMES,Forte Pharma,MINCEUR,50.46,50.46,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+356,turbodraine-ananas,Turbodraine ANANAS,Forte Pharma,MINCEUR,50.46,50.46,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+357,turbodraine-framboise,Turbodraine FRAMBOISE,Forte Pharma,MINCEUR,50.46,50.46,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+358,turbodraine-pche,Turbodraine PÊCHE,Forte Pharma,MINCEUR,50.46,50.46,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+359,xtraslim-capteur-3-en-1,XtraSlim Capteur 3 en 1,Forte Pharma,MINCEUR,102.22,102.22,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+360,xtraslim-coupe-faim,XtraSlim Coupe-Faim,Forte Pharma,MINCEUR,74.00,74.00,TND,0,0.00,0,0,50,Forte Pharma|Minceur et Perte de Poids
+362,crme-de-jour-spf-50,Crème de Jour SPF 50+ ALBUCIN-TRIPLE ACTION 30ml,Pharmaceris,GAMME W - Anti-Taches,0.00,39.35,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+363,contour-des-yeux,Contour des Yeux OPTI-SENSILIUM 15m,Pharmaceris,GAMME A - Peau Allergique et Sensible,0.00,37.92,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+364,coup-dclat-immdiat-hydratation,Coup d’éclat Immédiat Hydratation,Pharmaceris,GAMME W - Anti-Taches,0.00,30.30,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+365,rduit-les-hyperpigmentations-post-inflammatoires,Réduit les Hyperpigmentations (Post Inflammatoires) ALBUCIN-PP 3x4ml,Pharmaceris,GAMME W - Anti-Taches,0.00,35.22,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+366,coup-dclat-hydratation-et-prvention-des-rides,"Coup d’éclat ,Hydratation et Prévention des Rides",Pharmaceris,GAMME W - Anti-Taches,0.00,37.04,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+367,eau-tonifiante,Eau Tonifiante PURI-ALBUCIN II 150ml,Pharmaceris,GAMME W - Anti-Taches,0.00,34.41,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+368,crme-protectrice-spf-50,Crème protectrice spf 50+ pour la peau avec le problème du vitiligo-pour le visage et le corps Viti-melo day 75 ml,Pharmaceris,GAMME V - Vitiligo,0.00,37.92,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+369,gel-lavant-antibactrien-t-pour-le-visage,Gel lavant antibactérien t pour le visage Puri-sebogel 190 ml,Pharmaceris,GAMME T - Acnéique,0.00,38.58,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+370,crme-avec-retinol-pour-lacn-adulte-la-nuit,Crème avec retinol pour l’acné adulte la nuit,Pharmaceris,GAMME T - Acnéique,0.00,34.77,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+371,spf-30-crme-hydratante-et-apaisante-pour-le-visage-pendant-et-aprs-les-traitements-anti-acn,Spf 30 crème hydratante et apaisante pour le visage pendant et après les traitements anti acné Sebo-moistatic 50 ml,Pharmaceris,GAMME T - Acnéique,0.00,36.02,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+372,stop-boutons-gel,Stop Boutons Gel Spot Gel 10ml,Pharmaceris,GAMME T - Acnéique,0.00,38.27,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+373,huile-de-protection-sche-spf-50,Huile de protection sèche spf 50+ Sun protect 200 ml,Pharmaceris,GAMME S - Protection solaire,0.00,30.15,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+374,baume-protecteur-hydrolipide-spf-50,Baume protecteur hydrolipide spf 50+ Sun body protect 150 ml,Pharmaceris,GAMME S - Protection solaire,0.00,34.27,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+376,crme-protectrice-scurise-spf-50-pour-les-enfants,Crème protectrice sécurisée spf 50+ pour les enfants Filtres 100% minéraux 50 ml,Pharmaceris,GAMME S - Protection solaire,0.00,39.02,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+377,crme-solaire-protectrice-spf-50-visage-et-corps,Crème solaire protectrice spf 50+ visage et corps Pour bébés et enfants 125 ml,Pharmaceris,GAMME S - Protection solaire,0.00,30.68,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+378,spectrum-protect-spf50,Spectrum Protect spf50+ SUN PROTECTION CREAM 50ml,Pharmaceris,GAMME S - Protection solaire,0.00,29.98,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+379,fluide-protecteur-correctif-haute-protection-spf-50,Fluide protecteur-correctif haute protection spf 50+ Correction solaire 02 Sable 30 ml,Pharmaceris,GAMME S - Protection solaire,0.00,34.86,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+380,albucin-crme-de-jour-spf-50,ALBUCIN – Crème de Jour SPF 50+ ALBUCIN-TRIPLE ACTION 30ml,Pharmaceris,GAMME S - Protection solaire,0.00,37.60,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+381,gel-lavant-corps-et-peau-rgulant-le-processus-de-peeling,Gel lavant corps et peau régulant le processus de peeling Puri-ichtilium 250 ml,Pharmaceris,GAMME P - Psoriasis,0.00,41.73,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+382,corps-apaisant-et-fatning,Corps apaisant et fatning Ichtilium crème corps 175 ml,Pharmaceris,GAMME P - Psoriasis,0.00,51.84,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+383,shampoing-normalisant-cheveux-gras,Shampoing Normalisant Cheveux Gras H-SEBOPURIN 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,40.73,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+384,shampoing-cheveux-fins-et-affaiblis,Shampoing Cheveux Fins et Affaiblis H-KERATINEUM 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,49.18,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+385,shampoing-anti-pelliculaire-pellicules-grasses,Shampoing Anti-Pelliculaire Pellicules Grasses H-PURIN OILY 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,51.13,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+387,shampoing-cuir-chevelu-sensible,Shampoing Cuir chevelu Sensible H-SENSITONIN 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,41.07,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+388,shampoing-anti-chute-anti-cheveux-gris,Shampoing Anti-Chute Anti-Cheveux Gris H-STIMUTONE 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,39.51,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+389,sparay-anti-chute,Sparay Anti-Chute H-STIMUFORTEN 125ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,42.42,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+390,aprs-shampoing-anti-chute,Après Shampoing Anti-Chute H-STIMULINUM 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,49.49,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+391,shampoing-anti-chute,Shampoing Anti-Chute H-STIMUPURIN 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,41.33,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+392,shampoing-anti-chute-anti-pelliculaire,Shampoing Anti-Chute Anti-Pelliculaire H-STIMUCLARIS 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,42.50,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+393,shampoing-cheveux-sec,Shampoing Cheveux Sec H-NUTRIMELIN 250ml,Pharmaceris,GAMME H - Cheveux et Cuir chevelu,0.00,41.64,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+394,crme-minrale-dermo-protectrice-emotopique-spf-50,Crème minérale dermo-protectrice EMOTOPIQUE SPF 50+ CRÉME EMOTOPIC 75ml,Pharmaceris,GAMME E - Peau Sèche et Atopique,0.00,45.64,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+395,eau-micellaire,Eau Micellaire PREBIO-SENSITIQUE 200ml,Pharmaceris,GAMME A - Peau Allergique et Sensible,0.00,37.45,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+396,crme-lgre-spf20,Crème Légère SPF20 VITA-SENSILIUM 50ml,Pharmaceris,GAMME A - Peau Allergique et Sensible,0.00,33.72,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+397,crme-hydratante-riche-en-eau,Créme Hydratante Riche en Eau HYALURO-SENSILIUM 40ml,Pharmaceris,GAMME A - Peau Allergique et Sensible,0.00,29.96,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+398,crme-protectrice-spcifique,Crème Protectrice Spécifique MEDI PROTECTRICE 75ml,Pharmaceris,GAMME A - Peau Allergique et Sensible,0.00,39.22,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+399,crme-rparatrice-et-rgnratrice,Crème Réparatrice et Régénératrice CORNEO-SENSILIUM 75ml,Pharmaceris,GAMME A - Peau Allergique et Sensible,0.00,35.26,TND,0,0.00,0,0,50,Pharmaceris|Peau Sensible
+400,fluide-protecteur-et-correcteur-la-plus-haute-protection-spf-50,Fluide protecteur et correcteur la plus haute protection spf 50+ – Correction solaire 02 Ivoire 30 ml,Pharmaceris,GAMME F - Fluid Fondation,0.00,36.95,TND,0,0.00,0,0,50,Pharmaceris|Couverture et protection
+401,gel-nettoyant-antibactrien,Gel Nettoyant Antibactérien (200 ml),Dermedic,NORMACNE,27.13,27.13,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+402,crme-hydratante-matifiante,Crème Hydratante Matifiante,Dermedic,NORMACNE,0.00,28.02,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+403,stop-boutons,Stop Boutons,Dermedic,NORMACNE,23.92,23.92,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+404,crme-de-nuit-anti-imperfections,Crème de Nuit Anti-Imperfections,Dermedic,NORMACNE,0.00,23.91,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+405,crme-de-jour-nourrissante,Crème de Jour Nourrissante,Dermedic,OILAGE,0.00,42.92,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+406,crme-de-nuit-rparatrice,Crème de Nuit Rèparatrice,Dermedic,OILAGE,0.00,43.02,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+407,huile-nettoyante-visage,Huile Nettoyante Visage,Dermedic,OILAGE,0.00,44.17,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+408,crme-concentre-anti-rides-yeux,Crème Concentrée Anti Rides (Yeux),Dermedic,OILAGE,0.00,41.48,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+409,srum-antioxydant,Sérum Antioxydant,Dermedic,OILAGE,0.00,49.76,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+410,shampoing-sebu-balance,Shampoing Sebu-Balance,Dermedic,CAPILARTE,39.87,39.87,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+411,shampoing-anti-chute-et-repousse,Shampoing Anti-Chute et Repousse,Dermedic,CAPILARTE,38.68,38.68,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+412,srum-anti-chute-et-repousse,Sérum Anti-Chute et Repousse,Dermedic,CAPILARTE,58.91,58.91,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+413,shampoing-anti-chute-pour-cheveux-fins,Shampoing Anti-chute pour cheveux Fins,Dermedic,CAPILARTE,30.00,30.00,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+414,shampoing-anti-pelliculaire,Shampoing Anti-Pelliculaire,Dermedic,CAPILARTE,37.01,37.01,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+415,shampoing-apaisant,Shampoing Apaisant,Dermedic,CAPILARTE,42.25,42.25,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+416,crme-protectrice-fps-50-peaux-grasses-et-mixtes,Crème protectrice FPS 50+ peaux grasses et mixtes,Dermedic,SUNBRELLA,0.00,65.21,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+417,crme-protectrice-fps-50-peaux-sches-et-normales,Crème protectrice FPS 50+ Peaux sèches et normales,Dermedic,SUNBRELLA,0.00,58.26,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+418,spray-protecteur-fps-50-uva-uvb-vl-ir,Spray protecteur FPS 50+ UVA + UVB + VL + IR,Dermedic,SUNBRELLA,57.12,57.12,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+419,lait-protecteur-en-spray-spf-50,Lait protecteur en spray SPF 50+,Dermedic,SUNBRELLA,0.00,63.53,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+420,mulsion-micellaire-claircissante,Émulsion micellaire éclaircissante,Dermedic,MELUMIN,0.00,48.88,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+421,crme-de-jour-intense-anti-tches-spf-50,Crème de Jour intense Anti-Tâches SPF 50+,Dermedic,MELUMIN,0.00,48.66,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+422,crme-de-nuit-concentre-anti-tches,Crème de nuit concentrée Anti-Tâches,Dermedic,MELUMIN,0.00,44.70,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+423,eau-micellaire-dmaquillante-visageyeux,Eau micellaire démaquillante (visage&yeux) - 500 ml,Dermedic,HYDRAIN,26.42,26.42,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+424,crme-hydratante-spf-15,Crème Hydratante SPF 15,Dermedic,HYDRAIN,0.00,29.11,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+425,crme-gel-ultra-hydratante,Crème Gel Ultra-hydratante,Dermedic,HYDRAIN,39.87,39.87,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+426,srum-hydratant,Sérum hydratant,Dermedic,HYDRAIN,0.00,28.62,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+427,beurre-ultra-hydratant,Beurre Ultra Hydratant,Dermedic,HYDRAIN,0.00,32.79,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants
+428,crme-anti-rides-de-jour-1-spf15,Crème Anti-Rides de JOUR 1° SPF15,ClinicWay,Clinic Way,0.00,39.05,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+429,crme-anti-rides-de-nuit-1,Crème Anti-Rides de NUIT 1°,ClinicWay,Clinic Way,0.00,46.33,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+430,crme-anti-rides-de-jour-2-spf20,Crème Anti-Rides de JOUR 2° SPF20,ClinicWay,Clinic Way,0.00,44.92,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+431,crme-anti-rides-de-nuit-2,Crème Anti-Rides de NUIT 2°,ClinicWay,Clinic Way,0.00,52.31,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+432,crme-anti-rides-de-jour-3-spf15,Crème Anti-Rides de JOUR 3° SPF15,ClinicWay,Clinic Way,0.00,44.39,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+433,crme-anti-rides-de-nuit-3,Crème Anti-Rides de NUIT 3°,ClinicWay,Clinic Way,0.00,42.63,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+434,crme-anti-rides-de-jour-4-spf20,Crème Anti-Rides de JOUR 4° SPF20,ClinicWay,Clinic Way,0.00,46.21,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+435,crme-anti-rides-de-nuit-4,Crème Anti-Rides de NUIT 4°,ClinicWay,Clinic Way,0.00,51.60,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+436,crme-anti-rides-de-jour-5-spf-20,Crème Anti-Rides de JOUR 5° SPF 20,ClinicWay,Clinic Way,0.00,47.96,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+437,crme-anti-rides-de-nuit-5,Crème Anti-Rides de NUIT 5°,ClinicWay,Clinic Way,0.00,44.16,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+438,crme-anti-rides-de-jour-et-de-nuit-12-pour-le-contour-des-yeux,Crème Anti-Rides de JOUR et de NUIT 1°+2° pour le CONTOUR DES YEUX,ClinicWay,Clinic Way,0.00,39.24,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+439,crme-anti-rides-de-jour-et-de-nuit-34-pour-le-contour-des-yeux,Crème Anti-Rides de JOUR et de NUIT 3°+4° pour le CONTOUR DES YEUX,ClinicWay,Clinic Way,0.00,42.75,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+440,dermo-capsules-revitalisantes,Dermo- Capsules Revitalisantes,ClinicWay,Clinic Way,0.00,51.99,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+441,lifting-serum,LIFTING SERUM,ClinicWay,Clinic Way,0.00,48.13,TND,0,0.00,0,0,50,ClinicWay|Clinic Way
+442,brosse-dents-carebrush-white,Brosse à dents Carebrush white,MiraDent,Miradent,0.00,18.36,TND,0,0.00,0,0,50,MiraDent|Miradent
+443,brosse-dents-carebrush,Brosse à dents Carebrush,MiraDent,Miradent,0.00,19.21,TND,0,0.00,0,0,50,MiraDent|Miradent
+444,brosse-dents-lectrique,Brosse à dents électrique,MiraDent,Miradent,0.00,18.41,TND,0,0.00,0,0,50,MiraDent|Miradent
+445,kids-brush,Kid’s Brush,MiraDent,Miradent,0.00,19.08,TND,0,0.00,0,0,50,MiraDent|Miradent
+446,mirawhite-shine,Mirawhite Shine,MiraDent,Miradent,0.00,19.22,TND,0,0.00,0,0,50,MiraDent|Miradent
+447,mirawhite-gele,Mirawhite Gelée,MiraDent,Miradent,19.00,19.00,TND,0,0.00,0,0,50,MiraDent|Miradent
+448,paroguard-bain-de-bouche,Paroguard Bain de Bouche,MiraDent,Miradent,0.00,18.57,TND,0,0.00,0,0,50,MiraDent|Miradent
+449,mirafluor-bain-de-bouche,Mirafluor Bain de Bouche,MiraDent,Miradent,0.00,21.76,TND,0,0.00,0,0,50,MiraDent|Miradent
+450,mirasensitive-hap,Mirasensitive Hap+,MiraDent,Miradent,0.00,19.66,TND,0,0.00,0,0,50,MiraDent|Miradent
+451,mirafluor-c,Mirafluor C,MiraDent,Miradent,0.00,18.69,TND,0,0.00,0,0,50,MiraDent|Miradent
+452,miradont-gel,Miradont Gel,MiraDent,Miradent,0.00,18.76,TND,0,0.00,0,0,50,MiraDent|Miradent
+453,magnsium-marin-b6,Magnésium Marin +B6,Physio sources,Physio sources,39.90,39.90,TND,0,0.00,0,0,50,Physio sources|Physio sources
+454,source-calcium,Source Calcium,Physio sources,Physio sources,54.27,54.27,TND,0,0.00,0,0,50,Physio sources|Physio sources
+455,ace-slnium,ACE Sélénium,Physio sources,Physio sources,34.40,34.40,TND,0,0.00,0,0,50,Physio sources|Physio sources
+456,epa-force-70,EPA Force 70,Physio sources,Physio sources,60.40,60.40,TND,0,0.00,0,0,50,Physio sources|Physio sources
+493,multivitkids,Multivit'Kids,Forte Pharma,ENERGIE,50.00,50.00,EUR,0,0.00,0,0,100,energie
+494,rtention-deau,Rétention d'eau,Forte Pharma,MINCEUR,50.00,50.00,EUR,0,0.00,0,0,100,minceur
+495,ultra-boost-4g-effervescent,Ultra boost 4g (effervescent),Forte Pharma,ENERGIE,45.00,45.00,EUR,0,0.00,0,0,100,energie|effervescent
+496,crme-hydratante-peaux-sches-hypersensibles,Crème Hydratante (Peaux Sèches & Hypersensibles),Lirene,ACIDE POWER,25.00,25.00,EUR,0,0.00,0,0,100,acide power
+497,masque-sous-forme-de-chaussettes-lissant,Masque sous forme de Chaussettes (Lissant),Lirene,SOIN INTENSE (Mains & Pieds),25.00,25.00,EUR,0,0.00,0,0,100,soin intense (mains & pieds)
+498,eau-micellaire-apaisante-laloe-vera,Eau Micellaire Apaisante à l'aloe Vera,Lirene,NETTOYANTS (Visage&Yeux),25.00,25.00,EUR,0,0.00,0,0,100,nettoyants (visage&yeux)
+499,lotion-tonifiante-hydratante-base-daloe-vera-concombre,Lotion Tonifiante Hydratante à base d'Aloe vera & Concombre,Lirene,NETTOYANTS (Visage&Yeux),25.00,25.00,EUR,0,0.00,0,0,100,nettoyants (visage&yeux)
+500,pte-dargile-nettoyante,Pâte d'Argile Nettoyante,Lirene,NETTOYANTS (Visage&Yeux),25.00,25.00,EUR,0,0.00,0,0,100,nettoyants (visage&yeux)
+501,gel-nettoyant-crmeux,Gel Nettoyant Crèmeux,Dermedic,HYDRAIN,30.00,30.00,EUR,0,0.00,0,0,100,hydrain
+504,contour-des-yeux-1,Contour des Yeux,Dermedic,HYDRAIN,30.00,30.00,EUR,0,0.00,0,0,100,hydrain
+505,peeling-enzymatique-1,Peeling Enzymatique,Dermedic,HYDRAIN,30.00,30.00,EUR,0,0.00,0,0,100,hydrain
+506,gel-nettoyant-antibactrien-500-ml,Gel Nettoyant Antibactérien (500 ml),Dermedic,NORMACNE,30.00,30.00,EUR,0,0.00,0,0,100,normacne
+507,eau-micellaire-dmaquillante-visageyeux-200-ml,Eau micellaire démaquillante (visage&yeux) - 200 ml,Dermedic,HYDRAIN,30.00,30.00,EUR,0,0.00,0,0,100,hydrain
+508,crme-de-nuit-1,Crème de Nuit,Dermedic,HYDRAIN,30.00,30.00,EUR,0,0.00,0,0,100,hydrain
+509,mousse-nettoyante-puri-albucin-i-150ml,Mousse Nettoyante PURI-ALBUCIN I 150ml,Pharmaceris,GAMME W - Anti-Taches,35.00,35.00,EUR,0,0.00,0,0,100,gamme w - anti-taches
+510,crme-de-nuit-albucin-intensive-30ml,Créme de Nuit ALBUCIN-INTENSIVE 30ml,Pharmaceris,GAMME W - Anti-Taches,35.00,35.00,EUR,0,0.00,0,0,100,gamme w - anti-taches
+511,coup-dclat-immdiat-hydratation-albucin-mela-30ml,Coup d'éclat Immédiat Hydratation ALBUCIN -MELA 30ml,Pharmaceris,GAMME W - Anti-Taches,35.00,35.00,EUR,0,0.00,0,0,100,gamme w - anti-taches
+512,coup-dclat-hydratation-et-prvention-des-rides-albucin-c-5de-vitamine-c-30ml,"Coup d'éclat ,Hydratation et Prévention des Rides ALBUCIN-C 5%de vitamine C 30ml",Pharmaceris,GAMME W - Anti-Taches,35.00,35.00,EUR,0,0.00,0,0,100,gamme w - anti-taches
+513,crme-repigmentante-avec-une-zone-rduite-de-taches-de-blanchiment-pour-le-visage-et-le-corps-la-nuit-viti-melo-night-40-ml,Crème repigmentante avec une zone réduite de taches de blanchiment pour le visage et le corps la nuit Viti-melo night 40 ml,Pharmaceris,GAMME V - Vitiligo,35.00,35.00,EUR,0,0.00,0,0,100,gamme v - vitiligo
+514,mousse-nettoyante-puri-sebostatique-150ml,Mousse Nettoyante PURI-SEBOSTATIQUE 150ml,Pharmaceris,GAMME T - Acnéique,35.00,35.00,EUR,0,0.00,0,0,100,gamme t - acnéique
+515,mousse-nettoyante-puri-sensilium-150ml,Mousse Nettoyante PURI-SENSILIUM 150ml,Pharmaceris,GAMME A - Peau Allergique et Sensible,35.00,35.00,EUR,0,0.00,0,0,100,gamme a - peau allergique et sensible
+516,crme-avec-retinol-pour-lacn-adulte-la-nuit-pur-retinol-03-40-ml,"Crème avec retinol pour l'acné adulte la nuit PUR-Retinol 0,3 40 ml",Pharmaceris,GAMME T - Acnéique,35.00,35.00,EUR,0,0.00,0,0,100,gamme t - acnéique
+517,crme-protectrice-spf-50-medi-acn-protect-50ml,Crème Protectrice SPF 50+ Medi-Acné Protect 50ml,Pharmaceris,GAMME T - Acnéique,35.00,35.00,EUR,0,0.00,0,0,100,gamme t - acnéique
+518,crme-protectrice-spf-50-pour-lacn-medi-acne-protect-50-ml,Crème protectrice spf 50+ pour l'acné Medi acne protect 50 ml,Pharmaceris,GAMME S - Protection solaire,35.00,35.00,EUR,0,0.00,0,0,100,gamme s - protection solaire
+519,fluide-protecteur-correctif-haute-protection-spf-50-correction-solaire-01-sable-30-ml,Fluide protecteur-correctif haute protection spf 50+ – Correction solaire 01 Sable 30 ml,Pharmaceris,GAMME F - Fluid Fondation,35.00,35.00,EUR,0,0.00,0,0,100,gamme s - protection solaire
+520,shampoing-anti-chute-pour-cheveux-gras-1760901650248,Shampoing Anti-chute pour cheveux Gras,Dermedic,CAPILARTE,30.00,30.00,TND,0,0.00,0,0,50,Dermedic|Soins Hydratants

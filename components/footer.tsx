@@ -62,11 +62,6 @@ export function Footer() {
                     Checkout
                   </a>
                 </li>
-                <li>
-                  <a href="/admin" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                    Admin Panel
-                  </a>
-                </li>
               </ul>
             </div>
 
@@ -92,11 +87,6 @@ export function Footer() {
                 <li>
                   <a href="/order-success" className="text-muted-foreground hover:text-primary transition-colors duration-200">
                     Order Status
-                  </a>
-                </li>
-                <li>
-                  <a href="/admin" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                    Admin Access
                   </a>
                 </li>
               </ul>
