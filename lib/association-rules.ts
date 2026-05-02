@@ -1,4 +1,4 @@
-import rulesData from "../data/association_rules.json"
+import rulesData from "./association_rules.json"
 
 export type ExportedAssociationRule = {
   antecedent: string

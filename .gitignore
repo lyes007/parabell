@@ -6,9 +6,9 @@
 # next.js
 /.next/
 /out/
-/data
-/scripts
-/web-analytics-project
+
+# Large CSVs only (scripts + lib JSON stay tracked for builds)
+data/market_basket/*.csv
 
 # production
 /build

@@ -1,0 +1,1258 @@
+{
+  "generatedFrom": "data/market_basket/order_items_dataset.csv",
+  "orderCount": 1600,
+  "ruleCount": 139,
+  "rules": [
+    {
+      "antecedent": "425",
+      "consequents": [
+        "505"
+      ],
+      "lift": 6.626783248964565,
+      "confidence": 0.21951219512195122,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "505",
+      "consequents": [
+        "425"
+      ],
+      "lift": 6.626783248964564,
+      "confidence": 0.3396226415094339,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "501",
+      "consequents": [
+        "426"
+      ],
+      "lift": 6.223575173346863,
+      "confidence": 0.31506849315068497,
+      "support": 0.014375
+    },
+    {
+      "antecedent": "426",
+      "consequents": [
+        "501"
+      ],
+      "lift": 6.2235751733468625,
+      "confidence": 0.2839506172839506,
+      "support": 0.014375
+    },
+    {
+      "antecedent": "446",
+      "consequents": [
+        "445"
+      ],
+      "lift": 6.153846153846154,
+      "confidence": 0.2923076923076923,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "445",
+      "consequents": [
+        "446"
+      ],
+      "lift": 6.153846153846153,
+      "confidence": 0.25,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "320",
+      "consequents": [
+        "322"
+      ],
+      "lift": 6.097560975609756,
+      "confidence": 0.3125,
+      "support": 0.015625
+    },
+    {
+      "antecedent": "322",
+      "consequents": [
+        "320"
+      ],
+      "lift": 6.097560975609755,
+      "confidence": 0.3048780487804878,
+      "support": 0.015625
+    },
+    {
+      "antecedent": "393",
+      "consequents": [
+        "388"
+      ],
+      "lift": 6.033182503770739,
+      "confidence": 0.29411764705882354,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "388",
+      "consequents": [
+        "393"
+      ],
+      "lift": 6.033182503770738,
+      "confidence": 0.2564102564102564,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "507",
+      "consequents": [
+        "501"
+      ],
+      "lift": 6.0048789641583795,
+      "confidence": 0.27397260273972607,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "501",
+      "consequents": [
+        "507"
+      ],
+      "lift": 6.0048789641583795,
+      "confidence": 0.27397260273972607,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "445",
+      "consequents": [
+        "451"
+      ],
+      "lift": 5.76784426820476,
+      "confidence": 0.26315789473684215,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "451",
+      "consequents": [
+        "445"
+      ],
+      "lift": 5.767844268204759,
+      "confidence": 0.27397260273972607,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "387",
+      "consequents": [
+        "388"
+      ],
+      "lift": 5.716687683900799,
+      "confidence": 0.27868852459016397,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "388",
+      "consequents": [
+        "387"
+      ],
+      "lift": 5.7166876839007985,
+      "confidence": 0.21794871794871795,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "323",
+      "consequents": [
+        "324"
+      ],
+      "lift": 5.652173913043478,
+      "confidence": 0.32499999999999996,
+      "support": 0.01625
+    },
+    {
+      "antecedent": "324",
+      "consequents": [
+        "323"
+      ],
+      "lift": 5.652173913043478,
+      "confidence": 0.2826086956521739,
+      "support": 0.01625
+    },
+    {
+      "antecedent": "323",
+      "consequents": [
+        "326"
+      ],
+      "lift": 5.641025641025641,
+      "confidence": 0.275,
+      "support": 0.01375
+    },
+    {
+      "antecedent": "326",
+      "consequents": [
+        "323"
+      ],
+      "lift": 5.6410256410256405,
+      "confidence": 0.28205128205128205,
+      "support": 0.01375
+    },
+    {
+      "antecedent": "442",
+      "consequents": [
+        "447"
+      ],
+      "lift": 5.636007827788649,
+      "confidence": 0.2571428571428571,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "447",
+      "consequents": [
+        "442"
+      ],
+      "lift": 5.636007827788649,
+      "confidence": 0.24657534246575338,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "425",
+      "consequents": [
+        "423"
+      ],
+      "lift": 5.463414634146342,
+      "confidence": 0.25609756097560976,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "423",
+      "consequents": [
+        "425"
+      ],
+      "lift": 5.463414634146341,
+      "confidence": 0.27999999999999997,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "508",
+      "consequents": [
+        "426"
+      ],
+      "lift": 5.41180449856249,
+      "confidence": 0.27397260273972607,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "426",
+      "consequents": [
+        "508"
+      ],
+      "lift": 5.41180449856249,
+      "confidence": 0.2469135802469136,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "353",
+      "consequents": [
+        "494"
+      ],
+      "lift": 5.4082903397971895,
+      "confidence": 0.24675324675324675,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "494",
+      "consequents": [
+        "353"
+      ],
+      "lift": 5.408290339797189,
+      "confidence": 0.2602739726027397,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "497",
+      "consequents": [
+        "321"
+      ],
+      "lift": 5.349794238683128,
+      "confidence": 0.32098765432098764,
+      "support": 0.01625
+    },
+    {
+      "antecedent": "321",
+      "consequents": [
+        "497"
+      ],
+      "lift": 5.349794238683127,
+      "confidence": 0.2708333333333333,
+      "support": 0.01625
+    },
+    {
+      "antecedent": "358",
+      "consequents": [
+        "357"
+      ],
+      "lift": 5.345806882726363,
+      "confidence": 0.27397260273972607,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "357",
+      "consequents": [
+        "358"
+      ],
+      "lift": 5.345806882726362,
+      "confidence": 0.24390243902439027,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "391",
+      "consequents": [
+        "389"
+      ],
+      "lift": 5.291442744935925,
+      "confidence": 0.27118644067796616,
+      "support": 0.01
+    },
+    {
+      "antecedent": "427",
+      "consequents": [
+        "426"
+      ],
+      "lift": 5.28603721091984,
+      "confidence": 0.26760563380281693,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "426",
+      "consequents": [
+        "427"
+      ],
+      "lift": 5.28603721091984,
+      "confidence": 0.2345679012345679,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "423",
+      "consequents": [
+        "507"
+      ],
+      "lift": 5.260273972602739,
+      "confidence": 0.23999999999999996,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "507",
+      "consequents": [
+        "423"
+      ],
+      "lift": 5.2602739726027385,
+      "confidence": 0.24657534246575338,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "320",
+      "consequents": [
+        "323"
+      ],
+      "lift": 5.249999999999999,
+      "confidence": 0.26249999999999996,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "323",
+      "consequents": [
+        "320"
+      ],
+      "lift": 5.249999999999999,
+      "confidence": 0.26249999999999996,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "442",
+      "consequents": [
+        "444"
+      ],
+      "lift": 5.232358003442342,
+      "confidence": 0.27142857142857146,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "444",
+      "consequents": [
+        "442"
+      ],
+      "lift": 5.232358003442341,
+      "confidence": 0.22891566265060243,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "387",
+      "consequents": [
+        "389"
+      ],
+      "lift": 5.1179528188724515,
+      "confidence": 0.26229508196721313,
+      "support": 0.01
+    },
+    {
+      "antecedent": "327",
+      "consequents": [
+        "321"
+      ],
+      "lift": 5.063291139240507,
+      "confidence": 0.3037974683544304,
+      "support": 0.015
+    },
+    {
+      "antecedent": "321",
+      "consequents": [
+        "327"
+      ],
+      "lift": 5.063291139240506,
+      "confidence": 0.25,
+      "support": 0.015
+    },
+    {
+      "antecedent": "446",
+      "consequents": [
+        "444"
+      ],
+      "lift": 5.041705282669138,
+      "confidence": 0.26153846153846155,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "444",
+      "consequents": [
+        "446"
+      ],
+      "lift": 5.041705282669138,
+      "confidence": 0.20481927710843376,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "424",
+      "consequents": [
+        "501"
+      ],
+      "lift": 5.017329592341971,
+      "confidence": 0.22891566265060243,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "501",
+      "consequents": [
+        "424"
+      ],
+      "lift": 5.01732959234197,
+      "confidence": 0.2602739726027397,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "325",
+      "consequents": [
+        "327"
+      ],
+      "lift": 5.000781372089389,
+      "confidence": 0.2469135802469136,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "327",
+      "consequents": [
+        "325"
+      ],
+      "lift": 5.0007813720893886,
+      "confidence": 0.25316455696202533,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "448",
+      "consequents": [
+        "449"
+      ],
+      "lift": 4.9853943524829605,
+      "confidence": 0.24615384615384617,
+      "support": 0.01
+    },
+    {
+      "antecedent": "449",
+      "consequents": [
+        "448"
+      ],
+      "lift": 4.98539435248296,
+      "confidence": 0.20253164556962022,
+      "support": 0.01
+    },
+    {
+      "antecedent": "427",
+      "consequents": [
+        "508"
+      ],
+      "lift": 4.939224387420413,
+      "confidence": 0.22535211267605634,
+      "support": 0.01
+    },
+    {
+      "antecedent": "508",
+      "consequents": [
+        "427"
+      ],
+      "lift": 4.9392243874204125,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "320",
+      "consequents": [
+        "325"
+      ],
+      "lift": 4.938271604938271,
+      "confidence": 0.25,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "325",
+      "consequents": [
+        "320"
+      ],
+      "lift": 4.938271604938271,
+      "confidence": 0.2469135802469136,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "354",
+      "consequents": [
+        "356"
+      ],
+      "lift": 4.874333587204874,
+      "confidence": 0.30769230769230765,
+      "support": 0.015
+    },
+    {
+      "antecedent": "356",
+      "consequents": [
+        "354"
+      ],
+      "lift": 4.874333587204874,
+      "confidence": 0.23762376237623764,
+      "support": 0.015
+    },
+    {
+      "antecedent": "501",
+      "consequents": [
+        "508"
+      ],
+      "lift": 4.803903171326703,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "508",
+      "consequents": [
+        "501"
+      ],
+      "lift": 4.803903171326703,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "356",
+      "consequents": [
+        "360"
+      ],
+      "lift": 4.7893161409164176,
+      "confidence": 0.25742574257425743,
+      "support": 0.01625
+    },
+    {
+      "antecedent": "360",
+      "consequents": [
+        "356"
+      ],
+      "lift": 4.789316140916417,
+      "confidence": 0.3023255813953488,
+      "support": 0.01625
+    },
+    {
+      "antecedent": "359",
+      "consequents": [
+        "360"
+      ],
+      "lift": 4.7593293672255275,
+      "confidence": 0.2558139534883721,
+      "support": 0.01375
+    },
+    {
+      "antecedent": "360",
+      "consequents": [
+        "359"
+      ],
+      "lift": 4.7593293672255275,
+      "confidence": 0.2558139534883721,
+      "support": 0.01375
+    },
+    {
+      "antecedent": "360",
+      "consequents": [
+        "355"
+      ],
+      "lift": 4.75452196382429,
+      "confidence": 0.2674418604651163,
+      "support": 0.014375
+    },
+    {
+      "antecedent": "355",
+      "consequents": [
+        "360"
+      ],
+      "lift": 4.754521963824289,
+      "confidence": 0.25555555555555554,
+      "support": 0.014375
+    },
+    {
+      "antecedent": "392",
+      "consequents": [
+        "389"
+      ],
+      "lift": 4.738675958188154,
+      "confidence": 0.2428571428571429,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "389",
+      "consequents": [
+        "392"
+      ],
+      "lift": 4.738675958188154,
+      "confidence": 0.20731707317073172,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "353",
+      "consequents": [
+        "356"
+      ],
+      "lift": 4.731901761604733,
+      "confidence": 0.29870129870129875,
+      "support": 0.014375
+    },
+    {
+      "antecedent": "356",
+      "consequents": [
+        "353"
+      ],
+      "lift": 4.731901761604732,
+      "confidence": 0.22772277227722773,
+      "support": 0.014375
+    },
+    {
+      "antecedent": "442",
+      "consequents": [
+        "449"
+      ],
+      "lift": 4.6292947558770345,
+      "confidence": 0.2285714285714286,
+      "support": 0.01
+    },
+    {
+      "antecedent": "449",
+      "consequents": [
+        "442"
+      ],
+      "lift": 4.629294755877034,
+      "confidence": 0.20253164556962022,
+      "support": 0.01
+    },
+    {
+      "antecedent": "359",
+      "consequents": [
+        "356"
+      ],
+      "lift": 4.605111673958094,
+      "confidence": 0.29069767441860467,
+      "support": 0.015625
+    },
+    {
+      "antecedent": "356",
+      "consequents": [
+        "359"
+      ],
+      "lift": 4.605111673958094,
+      "confidence": 0.24752475247524752,
+      "support": 0.015625
+    },
+    {
+      "antecedent": "504",
+      "consequents": [
+        "424"
+      ],
+      "lift": 4.603488581190433,
+      "confidence": 0.2388059701492537,
+      "support": 0.01
+    },
+    {
+      "antecedent": "323",
+      "consequents": [
+        "321"
+      ],
+      "lift": 4.583333333333334,
+      "confidence": 0.275,
+      "support": 0.01375
+    },
+    {
+      "antecedent": "321",
+      "consequents": [
+        "323"
+      ],
+      "lift": 4.583333333333333,
+      "confidence": 0.22916666666666669,
+      "support": 0.01375
+    },
+    {
+      "antecedent": "357",
+      "consequents": [
+        "355"
+      ],
+      "lift": 4.5528455284552845,
+      "confidence": 0.25609756097560976,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "355",
+      "consequents": [
+        "357"
+      ],
+      "lift": 4.552845528455284,
+      "confidence": 0.23333333333333328,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "507",
+      "consequents": [
+        "425"
+      ],
+      "lift": 4.543935850317408,
+      "confidence": 0.23287671232876714,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "425",
+      "consequents": [
+        "507"
+      ],
+      "lift": 4.543935850317408,
+      "confidence": 0.20731707317073172,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "384",
+      "consequents": [
+        "389"
+      ],
+      "lift": 4.524566984800283,
+      "confidence": 0.2318840579710145,
+      "support": 0.01
+    },
+    {
+      "antecedent": "322",
+      "consequents": [
+        "326"
+      ],
+      "lift": 4.50281425891182,
+      "confidence": 0.21951219512195122,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "326",
+      "consequents": [
+        "322"
+      ],
+      "lift": 4.502814258911819,
+      "confidence": 0.23076923076923073,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "358",
+      "consequents": [
+        "354"
+      ],
+      "lift": 4.495960660344221,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "354",
+      "consequents": [
+        "358"
+      ],
+      "lift": 4.495960660344221,
+      "confidence": 0.2051282051282051,
+      "support": 0.01
+    },
+    {
+      "antecedent": "451",
+      "consequents": [
+        "444"
+      ],
+      "lift": 4.489189635253343,
+      "confidence": 0.23287671232876714,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "444",
+      "consequents": [
+        "451"
+      ],
+      "lift": 4.489189635253343,
+      "confidence": 0.20481927710843376,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "326",
+      "consequents": [
+        "321"
+      ],
+      "lift": 4.487179487179486,
+      "confidence": 0.26923076923076916,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "321",
+      "consequents": [
+        "326"
+      ],
+      "lift": 4.487179487179486,
+      "confidence": 0.21874999999999997,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "447",
+      "consequents": [
+        "449"
+      ],
+      "lift": 4.439049765909485,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "449",
+      "consequents": [
+        "447"
+      ],
+      "lift": 4.439049765909484,
+      "confidence": 0.20253164556962022,
+      "support": 0.01
+    },
+    {
+      "antecedent": "497",
+      "consequents": [
+        "325"
+      ],
+      "lift": 4.38957475994513,
+      "confidence": 0.22222222222222218,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "325",
+      "consequents": [
+        "497"
+      ],
+      "lift": 4.38957475994513,
+      "confidence": 0.22222222222222218,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "326",
+      "consequents": [
+        "320"
+      ],
+      "lift": 4.358974358974359,
+      "confidence": 0.21794871794871795,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "320",
+      "consequents": [
+        "326"
+      ],
+      "lift": 4.358974358974359,
+      "confidence": 0.2125,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "426",
+      "consequents": [
+        "425"
+      ],
+      "lift": 4.336043360433604,
+      "confidence": 0.22222222222222218,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "425",
+      "consequents": [
+        "426"
+      ],
+      "lift": 4.336043360433604,
+      "confidence": 0.21951219512195122,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "507",
+      "consequents": [
+        "426"
+      ],
+      "lift": 4.329443598849991,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "357",
+      "consequents": [
+        "360"
+      ],
+      "lift": 4.310833806012479,
+      "confidence": 0.23170731707317074,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "360",
+      "consequents": [
+        "357"
+      ],
+      "lift": 4.310833806012479,
+      "confidence": 0.22093023255813954,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "325",
+      "consequents": [
+        "326"
+      ],
+      "lift": 4.305159860715417,
+      "confidence": 0.20987654320987656,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "326",
+      "consequents": [
+        "325"
+      ],
+      "lift": 4.305159860715416,
+      "confidence": 0.21794871794871795,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "353",
+      "consequents": [
+        "354"
+      ],
+      "lift": 4.262404262404263,
+      "confidence": 0.2077922077922078,
+      "support": 0.01
+    },
+    {
+      "antecedent": "354",
+      "consequents": [
+        "353"
+      ],
+      "lift": 4.262404262404262,
+      "confidence": 0.2051282051282051,
+      "support": 0.01
+    },
+    {
+      "antecedent": "388",
+      "consequents": [
+        "389"
+      ],
+      "lift": 4.252657911194497,
+      "confidence": 0.21794871794871795,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "389",
+      "consequents": [
+        "388"
+      ],
+      "lift": 4.252657911194497,
+      "confidence": 0.20731707317073172,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "326",
+      "consequents": [
+        "324"
+      ],
+      "lift": 4.236343366778149,
+      "confidence": 0.24358974358974356,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "324",
+      "consequents": [
+        "326"
+      ],
+      "lift": 4.236343366778149,
+      "confidence": 0.20652173913043476,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "507",
+      "consequents": [
+        "424"
+      ],
+      "lift": 4.225119656709028,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "447",
+      "consequents": [
+        "444"
+      ],
+      "lift": 4.225119656709028,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "327",
+      "consequents": [
+        "322"
+      ],
+      "lift": 4.198826798394567,
+      "confidence": 0.21518987341772153,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "322",
+      "consequents": [
+        "327"
+      ],
+      "lift": 4.198826798394566,
+      "confidence": 0.20731707317073172,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "325",
+      "consequents": [
+        "321"
+      ],
+      "lift": 4.1152263374485605,
+      "confidence": 0.2469135802469136,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "321",
+      "consequents": [
+        "325"
+      ],
+      "lift": 4.11522633744856,
+      "confidence": 0.20833333333333334,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "325",
+      "consequents": [
+        "322"
+      ],
+      "lift": 4.095152062631738,
+      "confidence": 0.20987654320987656,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "322",
+      "consequents": [
+        "325"
+      ],
+      "lift": 4.095152062631738,
+      "confidence": 0.20731707317073172,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "325",
+      "consequents": [
+        "324"
+      ],
+      "lift": 4.07944176060118,
+      "confidence": 0.2345679012345679,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "324",
+      "consequents": [
+        "325"
+      ],
+      "lift": 4.07944176060118,
+      "confidence": 0.20652173913043476,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "494",
+      "consequents": [
+        "359"
+      ],
+      "lift": 4.07773176170755,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "326",
+      "consequents": [
+        "497"
+      ],
+      "lift": 4.0519151630262735,
+      "confidence": 0.2051282051282051,
+      "support": 0.01
+    },
+    {
+      "antecedent": "322",
+      "consequents": [
+        "324"
+      ],
+      "lift": 4.029692470837752,
+      "confidence": 0.23170731707317074,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "324",
+      "consequents": [
+        "322"
+      ],
+      "lift": 4.029692470837752,
+      "confidence": 0.20652173913043476,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "327",
+      "consequents": [
+        "497"
+      ],
+      "lift": 4.00062509767151,
+      "confidence": 0.20253164556962022,
+      "support": 0.01
+    },
+    {
+      "antecedent": "425",
+      "consequents": [
+        "424"
+      ],
+      "lift": 3.9964736996767565,
+      "confidence": 0.20731707317073172,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "424",
+      "consequents": [
+        "425"
+      ],
+      "lift": 3.9964736996767565,
+      "confidence": 0.20481927710843376,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "359",
+      "consequents": [
+        "355"
+      ],
+      "lift": 3.9276485788113695,
+      "confidence": 0.22093023255813954,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "355",
+      "consequents": [
+        "359"
+      ],
+      "lift": 3.927648578811369,
+      "confidence": 0.21111111111111108,
+      "support": 0.011875
+    },
+    {
+      "antecedent": "358",
+      "consequents": [
+        "355"
+      ],
+      "lift": 3.896499238964992,
+      "confidence": 0.2191780821917808,
+      "support": 0.01
+    },
+    {
+      "antecedent": "354",
+      "consequents": [
+        "360"
+      ],
+      "lift": 3.81633870005963,
+      "confidence": 0.2051282051282051,
+      "support": 0.01
+    },
+    {
+      "antecedent": "324",
+      "consequents": [
+        "321"
+      ],
+      "lift": 3.804347826086956,
+      "confidence": 0.22826086956521735,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "321",
+      "consequents": [
+        "324"
+      ],
+      "lift": 3.8043478260869557,
+      "confidence": 0.21874999999999997,
+      "support": 0.013125
+    },
+    {
+      "antecedent": "320",
+      "consequents": [
+        "321"
+      ],
+      "lift": 3.749999999999999,
+      "confidence": 0.22499999999999995,
+      "support": 0.01125
+    },
+    {
+      "antecedent": "327",
+      "consequents": [
+        "324"
+      ],
+      "lift": 3.7424325811777654,
+      "confidence": 0.21518987341772153,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "320",
+      "consequents": [
+        "324"
+      ],
+      "lift": 3.695652173913043,
+      "confidence": 0.2125,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "494",
+      "consequents": [
+        "356"
+      ],
+      "lift": 3.6891360368913606,
+      "confidence": 0.23287671232876714,
+      "support": 0.010625
+    },
+    {
+      "antecedent": "354",
+      "consequents": [
+        "355"
+      ],
+      "lift": 3.646723646723646,
+      "confidence": 0.2051282051282051,
+      "support": 0.01
+    },
+    {
+      "antecedent": "355",
+      "consequents": [
+        "356"
+      ],
+      "lift": 3.52035203520352,
+      "confidence": 0.2222222222222222,
+      "support": 0.0125
+    },
+    {
+      "antecedent": "357",
+      "consequents": [
+        "356"
+      ],
+      "lift": 3.2842308621106016,
+      "confidence": 0.20731707317073172,
+      "support": 0.010625
+    }
+  ]
+}
