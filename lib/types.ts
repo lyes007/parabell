@@ -47,6 +47,8 @@ export interface Product {
   updated_at: Date
   deleted_at?: Date
   brand: Brand
+  /** True when this row was chosen via exported Apriori rules (related products). */
+  recommendedByApriori?: boolean
 }
 
 export interface ProductImage {

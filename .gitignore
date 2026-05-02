@@ -6,6 +6,9 @@
 # next.js
 /.next/
 /out/
+/data
+/scripts
+/web-analytics-project
 
 # production
 /build
@@ -25,3 +28,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# jupyter (auto-saved notebook copies; keep tracked notebooks only)
+.ipynb_checkpoints/
+
+# python (association-rules export script / local tooling)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+
+# duplicate CSV exports next to notebooks (canonical: data/market_basket/*.csv)
+web analytics project/*.csv
+
+# os / editor noise
+.DS_Store
+Thumbs.db

@@ -12,6 +12,8 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
+    "verify:csv-products": "tsx scripts/verify-csv-product-ids-in-db.ts",
+    "export:association-rules": "python scripts/export_association_rules.py",
     "postinstall": "prisma generate"
   },
   "dependencies": {

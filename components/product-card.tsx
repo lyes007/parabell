@@ -1,18 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import type { Product } from "@/lib/types"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { ShoppingCart } from "lucide-react"
-import { useCart } from "@/lib/cart-context"
 
 interface ProductCardProps {
   product: Product
+  /** Green "Recommend" tag (e.g. Apriori-based related products). */
+  recommendBadge?: boolean
 }
 
-export function ProductCard({ product }: ProductCardProps) {
-  const { addItem } = useCart()
+export function ProductCard({ product, recommendBadge }: ProductCardProps) {
   const mainImage = Array.isArray(product.images) && product.images.length > 0 ? product.images[0] : null
 
   const formatPrice = (price: number) => {
@@ -22,14 +18,18 @@ export function ProductCard({ product }: ProductCardProps) {
     }).format(price)
   }
 
-  const handleAddToCart = () => {
-    addItem(product, 1)
-  }
-
   return (
     <div className="group">
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-white mb-3">
+        {recommendBadge && (
+          <span
+            className="absolute right-2 top-2 z-10 rounded-md bg-emerald-600 px-2 py-0.5 text-xs font-medium text-white shadow-sm"
+            title="Recommended from purchase patterns"
+          >
+            Recommend
+          </span>
+        )}
         <Link href={`/products/${product.slug}`} className="block h-full">
           {mainImage ? (
             <Image

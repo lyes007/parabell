@@ -8,6 +8,8 @@ import { Loader2 } from "lucide-react"
 
 interface ProductGridProps {
   initialProducts?: Product[]
+  /** When true, only render `initialProducts` (no /api/products fetch or load-more). */
+  staticListing?: boolean
   category?: string
   brand?: string
   search?: string
@@ -25,6 +27,7 @@ interface ProductGridProps {
 
 export function ProductGrid({
   initialProducts = [],
+  staticListing = false,
   category,
   brand,
   search,
@@ -110,11 +113,21 @@ export function ProductGrid({
     loadProducts(nextPage)
   }
 
+  // Static block (e.g. related products): only show server-provided products
+  useEffect(() => {
+    if (!staticListing) return
+    setProducts(Array.isArray(initialProducts) ? initialProducts : [])
+    setHasMore(false)
+    setPage(1)
+    setError(null)
+  }, [staticListing, initialProducts])
+
   // Reset when filters change
   useEffect(() => {
+    if (staticListing) return
     setPage(1)
     loadProducts(1, true)
-  }, [category, brand, search, featured, filters, sortBy, sortOrder])
+  }, [category, brand, search, featured, filters, sortBy, sortOrder, staticListing])
 
   // Ensure products is always an array
   const safeProducts = Array.isArray(products) ? products : []
@@ -144,7 +157,11 @@ export function ProductGrid({
       {!error && (
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {safeProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              recommendBadge={!!product.recommendedByApriori}
+            />
           ))}
         </div>
       )}
@@ -161,7 +178,7 @@ export function ProductGrid({
         </div>
       )}
 
-      {hasMore && !error && (
+      {hasMore && !error && !staticListing && (
         <div className="text-center pt-8">
           <Button 
             onClick={loadMore} 
